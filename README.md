@@ -1,9 +1,12 @@
 # Hey, I'm Marc
 
 **Senior Software Developer** at **Netflix // Eyeline Studios**
-I think in systems. From pixel perfect VFX pipelines to production grade software, I look for the fundamental pattern underneath the problem and build from there.
+I think in systems. 
+From pixel perfect VFX pipelines to production grade software, 
+I look for the fundamental pattern underneath the problem and build from there.
 
-10+ years in film, VFX, and production engineering. Started as a Digital Artist, evolved into a Pipeline TD, now I architect and build the tools and infrastructure that creative teams rely on every day.
+10+ years in software developments in film, VFX, and production engineering. 
+Started as a Digital Artist, evolved into a Pipeline TD, now I architect and love to build the tools and infrastructure that creative teams rely on.
 
 ---
 
@@ -11,8 +14,8 @@ I think in systems. From pixel perfect VFX pipelines to production grade softwar
 
 **Languages**
 
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![Shell](https://img.shields.io/badge/Shell-4EAA25?style=flat&logo=gnubash&logoColor=white)
 
 **Domains**
