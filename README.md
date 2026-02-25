@@ -1,14 +1,10 @@
 # Hey, I'm Marc
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&duration=3000&pause=1000&color=58A6FF&center=false&vCenter=true&width=700&height=35&lines=Senior+Software+Developer+%40+Netflix+%2F%2F+Eyeline+Studios;10%2B+years+in+Film%2C+VFX+%26+Production+Engineering;Building+the+tools+creative+teams+depend+on" />
-  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&duration=3000&pause=1000&color=24292F&center=false&vCenter=true&width=700&height=35&lines=Senior+Software+Developer+%40+Netflix+%2F%2F+Eyeline+Studios;10%2B+years+in+Film%2C+VFX+%26+Production+Engineering;Building+the+tools+creative+teams+depend+on" />
-  <img alt="Typing SVG" src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&duration=3000&pause=1000&color=24292F&center=false&vCenter=true&width=700&height=35&lines=Senior+Software+Developer+%40+Netflix+%2F%2F+Eyeline+Studios;10%2B+years+in+Film%2C+VFX+%26+Production+Engineering;Building+the+tools+creative+teams+depend+on" />
-</picture>
+**Senior Software Developer** at **Netflix // Eyeline Studios**
 
 I build production-grade software where creativity meets engineering — from VFX pipeline systems to intelligent workflow automation. I find the pattern underneath the problem and build from there.
 
-10+ years in film, VFX, and production engineering. Started as a Digital Artist, evolved through Pipeline TD, now I architect the tools and infrastructure that creative teams at **Netflix // Eyeline Studios** depend on.
+10+ years in film, VFX, and production engineering. Started as a Digital Artist, evolved through Pipeline TD, now I architect the tools and infrastructure that creative teams depend on.
 
 ---
 
@@ -55,12 +51,6 @@ I build production-grade software where creativity meets engineering — from VF
   <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-dark&hide_border=true&area=true" />
   <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-light&hide_border=true&area=true" />
   <img alt="Contribution Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-light&hide_border=true&area=true" width="100%" />
-</picture>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/marcmantei/marcmantei/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/marcmantei/marcmantei/output/github-snake.svg" />
-  <img alt="Snake animation" src="https://raw.githubusercontent.com/marcmantei/marcmantei/output/github-snake.svg" width="100%" />
 </picture>
 
 ---
