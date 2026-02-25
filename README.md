@@ -37,10 +37,24 @@ I believe the biggest breakthroughs happen when you stop treating symptoms and s
 
 ### GitHub Stats
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=marcmantei&show_icons=true&theme=github_dark&hide_border=true&hide_title=true&count_private=true" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=marcmantei&show_icons=true&theme=default&hide_border=true&hide_title=true&count_private=true" />
+    <img alt="GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=marcmantei&show_icons=true&theme=default&hide_border=true&hide_title=true&count_private=true" height="180" />
+  </picture>
+  &nbsp;
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=marcmantei&theme=github-dark-blue&hide_border=true" />
+    <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=marcmantei&theme=default&hide_border=true" />
+    <img alt="GitHub Streak" src="https://streak-stats.demolab.com?user=marcmantei&theme=default&hide_border=true" height="180" />
+  </picture>
+</p>
+
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=marcmantei&show_icons=true&theme=github_dark&hide_border=true&hide_title=true&count_private=true" />
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=marcmantei&show_icons=true&theme=default&hide_border=true&hide_title=true&count_private=true" />
-  <img alt="GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=marcmantei&show_icons=true&theme=default&hide_border=true&hide_title=true&count_private=true" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-dark&hide_border=true&area=true" />
+  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-light&hide_border=true&area=true" />
+  <img alt="Contribution Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-light&hide_border=true&area=true" width="100%" />
 </picture>
 
 ---
