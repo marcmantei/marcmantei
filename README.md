@@ -1,37 +1,37 @@
 # Hey, I'm Marc
 
-**Senior Software Developer** at **Netflix // Eyeline Studios**
-I think in systems. 
-From pixel perfect VFX pipelines to production grade software, 
-I look for the fundamental pattern underneath the problem and build from there.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&duration=3000&pause=1000&color=58A6FF&center=false&vCenter=true&width=700&height=35&lines=Senior+Software+Developer+%40+Netflix+%2F%2F+Eyeline+Studios;10%2B+years+in+Film%2C+VFX+%26+Production+Engineering;Building+the+tools+creative+teams+depend+on" />
+  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&duration=3000&pause=1000&color=24292F&center=false&vCenter=true&width=700&height=35&lines=Senior+Software+Developer+%40+Netflix+%2F%2F+Eyeline+Studios;10%2B+years+in+Film%2C+VFX+%26+Production+Engineering;Building+the+tools+creative+teams+depend+on" />
+  <img alt="Typing SVG" src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&duration=3000&pause=1000&color=24292F&center=false&vCenter=true&width=700&height=35&lines=Senior+Software+Developer+%40+Netflix+%2F%2F+Eyeline+Studios;10%2B+years+in+Film%2C+VFX+%26+Production+Engineering;Building+the+tools+creative+teams+depend+on" />
+</picture>
 
-10+ years in software developments in film, VFX, and production engineering. 
-Started as a Digital Artist, evolved into a Pipeline TD, now I architect and love to build the tools and infrastructure that creative teams rely on.
+I build production-grade software where creativity meets engineering — from VFX pipeline systems to intelligent workflow automation. I find the pattern underneath the problem and build from there.
+
+10+ years in film, VFX, and production engineering. Started as a Digital Artist, evolved through Pipeline TD, now I architect the tools and infrastructure that creative teams at **Netflix // Eyeline Studios** depend on.
 
 ---
 
 ### What I work with
 
-**Languages**
+<p>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=py,ts,bash,react,nextjs,docker,linux,git&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://skillicons.dev/icons?i=py,ts,bash,react,nextjs,docker,linux,git&theme=light" />
+    <img alt="Tech Stack" src="https://skillicons.dev/icons?i=py,ts,bash,react,nextjs,docker,linux,git&theme=light" />
+  </picture>
+</p>
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-![Shell](https://img.shields.io/badge/Shell-4EAA25?style=flat&logo=gnubash&logoColor=white)
-
-**Domains**
-
-`Fullstack Development` `ML / AI` `Pipeline Engineering` `Workflow Automation` `VFX Production Systems`
+`Pipeline Engineering` `Workflow Automation` `VFX Production Systems` `ML / AI` `Fullstack Development`
 
 ---
 
-### What I'm exploring
+### Current focus
 
-I believe the biggest breakthroughs happen when you stop treating symptoms and start looking for the underlying algorithm that governs a system, whether that system is a software architecture, a data pipeline, or the human body itself. The mind wants to build things that outlast its biological substrate. That tension drives everything I'm curious about right now:
-
-- **AI / ML:** LLM application patterns, RAG architectures, intelligent automation in production workflows
-- **Longevity & Biohacking:** optimizing the substrate so the mind can keep building
-- **Brain Computer Interfaces:** closing the gap between thought and execution
-- **Developer Tooling:** removing friction, making systems heal themselves
+- **AI / ML** — LLM application patterns, RAG architectures, intelligent production automation
+- **Developer Tooling** — self-healing systems, workflow orchestration, reducing friction at scale
+- **Brain-Computer Interfaces** — closing the gap between thought and execution
+- **Longevity** — optimizing the substrate so the mind can keep building
 
 ---
 
@@ -57,6 +57,12 @@ I believe the biggest breakthroughs happen when you stop treating symptoms and s
   <img alt="Contribution Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-light&hide_border=true&area=true" width="100%" />
 </picture>
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/marcmantei/marcmantei/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/marcmantei/marcmantei/output/github-snake.svg" />
+  <img alt="Snake animation" src="https://raw.githubusercontent.com/marcmantei/marcmantei/output/github-snake.svg" width="100%" />
+</picture>
+
 ---
 
 ### Let's connect
@@ -64,4 +70,3 @@ I believe the biggest breakthroughs happen when you stop treating symptoms and s
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcmantei/)
 [![Website](https://img.shields.io/badge/marcmantei.com-000?style=flat&logo=safari&logoColor=white)](https://www.marcmantei.com)
 [![Email](https://img.shields.io/badge/mail@marcmantei.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:mail@marcmantei.com)
-
