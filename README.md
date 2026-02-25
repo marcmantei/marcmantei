@@ -2,11 +2,14 @@
 
 **Senior Software Developer** at **Netflix // Eyeline Studios**
 
-I design and build the software infrastructure behind large-scale production — pipeline systems, workflow automation, and the developer tools that keep creative teams shipping.
+I design and build the software infrastructure behind large-scale production:<br>
+pipeline systems, workflow automation, and the developer tools that keep creative teams shipping.
 
-10+ years across fullstack development, pipeline engineering, and ML/AI. Started as a Digital Artist, evolved through Pipeline TD into software architecture — building reliable systems at production scale.
+10+ years across fullstack development, pipeline engineering, and ML/AI.<br>
+Started as a Digital Artist, evolved through Pipeline TD into software architecture.
 
-> Developed key production tools for [Eyeline Studios'](https://eyelinestudios.com/en/studios/stages) virtual production stages — LED volumes, volumetric capture, and the Light Dome.
+> Developed key production tools for [Eyeline Studios'](https://eyelinestudios.com/en/studios/stages) virtual production stages,<br>
+> including LED volumes, volumetric capture, and the Light Dome.
 
 ---
 
@@ -25,8 +28,8 @@ I design and build the software infrastructure behind large-scale production —
 
 ### Current focus
 
-- **AI / ML** — LLM application patterns, RAG architectures, intelligent production automation
-- **Developer Tooling** — self-healing systems, workflow orchestration, reducing friction at scale
+- **AI / ML:** LLM application patterns, RAG architectures, intelligent production automation
+- **Developer Tooling:** self-healing systems, workflow orchestration, reducing friction at scale
 
 ---
 
