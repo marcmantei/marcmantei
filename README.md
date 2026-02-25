@@ -6,6 +6,8 @@ I design and build the software infrastructure behind large-scale production —
 
 10+ years across fullstack development, pipeline engineering, and ML/AI. Started as a Digital Artist, evolved through Pipeline TD into software architecture — building reliable systems at production scale.
 
+> Developed key production tools for [Eyeline Studios'](https://eyelinestudios.com/en/studios/stages) virtual production stages — LED volumes, volumetric capture, and the Light Dome.
+
 ---
 
 ### What I work with
