@@ -2,23 +2,22 @@
 
 **Senior Software Developer** at **Netflix // Eyeline Studios**
 
-I build production-grade software where creativity meets engineering — from VFX pipeline systems to intelligent workflow automation. I find the pattern underneath the problem and build from there.
+I design and build the software infrastructure behind large-scale production — pipeline systems, workflow automation, and the developer tools that keep creative teams shipping.
 
-10+ years in film, VFX, and production engineering. Started as a Digital Artist, evolved through Pipeline TD, now I architect the tools and infrastructure that creative teams depend on.
+10+ years across fullstack development, pipeline engineering, and ML/AI. Started as a Digital Artist, evolved through Pipeline TD into software architecture — building reliable systems at production scale.
 
 ---
 
 ### What I work with
 
-<p>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=py,ts,bash,react,nextjs,docker,linux,git&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://skillicons.dev/icons?i=py,ts,bash,react,nextjs,docker,linux,git&theme=light" />
-    <img alt="Tech Stack" src="https://skillicons.dev/icons?i=py,ts,bash,react,nextjs,docker,linux,git&theme=light" />
-  </picture>
-</p>
-
-`Pipeline Engineering` `Workflow Automation` `VFX Production Systems` `ML / AI` `Fullstack Development`
+![Python](https://img.shields.io/badge/-Python-555?style=flat-square&logo=python&logoColor=fff)
+![TypeScript](https://img.shields.io/badge/-TypeScript-555?style=flat-square&logo=typescript&logoColor=fff)
+![Bash](https://img.shields.io/badge/-Bash-555?style=flat-square&logo=gnubash&logoColor=fff)
+![React](https://img.shields.io/badge/-React-555?style=flat-square&logo=react&logoColor=fff)
+![Next.js](https://img.shields.io/badge/-Next.js-555?style=flat-square&logo=nextdotjs&logoColor=fff)
+![Docker](https://img.shields.io/badge/-Docker-555?style=flat-square&logo=docker&logoColor=fff)
+![Linux](https://img.shields.io/badge/-Linux-555?style=flat-square&logo=linux&logoColor=fff)
+![Git](https://img.shields.io/badge/-Git-555?style=flat-square&logo=git&logoColor=fff)
 
 ---
 
@@ -26,8 +25,6 @@ I build production-grade software where creativity meets engineering — from VF
 
 - **AI / ML** — LLM application patterns, RAG architectures, intelligent production automation
 - **Developer Tooling** — self-healing systems, workflow orchestration, reducing friction at scale
-- **Brain-Computer Interfaces** — closing the gap between thought and execution
-- **Longevity** — optimizing the substrate so the mind can keep building
 
 ---
 
