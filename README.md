@@ -13,6 +13,14 @@ Started as a Digital Artist, evolved through Pipeline TD into software architect
 
 ---
 
+### Let's connect
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcmantei/)
+[![Website](https://img.shields.io/badge/marcmantei.com-000?style=flat&logo=safari&logoColor=white)](https://www.marcmantei.com)
+[![Email](https://img.shields.io/badge/mail@marcmantei.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:mail@marcmantei.com)
+
+---
+
 ### What I work with
 
 ![Python](https://img.shields.io/badge/-Python-555?style=flat-square&logo=python&logoColor=fff)
@@ -55,10 +63,3 @@ Started as a Digital Artist, evolved through Pipeline TD into software architect
   <img alt="Contribution Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-light&hide_border=true&area=true" width="100%" />
 </picture>
 
----
-
-### Let's connect
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcmantei/)
-[![Website](https://img.shields.io/badge/marcmantei.com-000?style=flat&logo=safari&logoColor=white)](https://www.marcmantei.com)
-[![Email](https://img.shields.io/badge/mail@marcmantei.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:mail@marcmantei.com)
