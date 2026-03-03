@@ -1,6 +1,6 @@
 # Hey, I'm Marc
 
-**Senior Software Developer** at **Netflix // Eyeline Studios**
+**Senior Software Developer**
 
 I design and build the software infrastructure behind large-scale production:<br>
 pipeline systems, workflow automation, and the developer tools that keep creative teams shipping.
