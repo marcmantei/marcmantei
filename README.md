@@ -45,15 +45,9 @@ Started as a Digital Artist, evolved through Pipeline TD into software architect
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-amber-sigma-33.vercel.app/api?username=marcmantei&show_icons=true&hide_rank=true&include_all_commits=true&theme=github_dark&hide_border=true&hide_title=true&count_private=true&v=2" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats-amber-sigma-33.vercel.app/api?username=marcmantei&show_icons=true&hide_rank=true&include_all_commits=true&theme=default&hide_border=true&hide_title=true&count_private=true&v=2" />
-    <img alt="GitHub Stats" src="https://github-readme-stats-amber-sigma-33.vercel.app/api?username=marcmantei&show_icons=true&hide_rank=true&include_all_commits=true&theme=default&hide_border=true&hide_title=true&count_private=true&v=2" height="180" />
-  </picture>
-  &nbsp;
-  <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=marcmantei&theme=github-dark-blue&hide_border=true&v=2" />
     <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=marcmantei&theme=default&hide_border=true&v=2" />
-    <img alt="GitHub Streak" src="https://streak-stats.demolab.com?user=marcmantei&theme=default&hide_border=true&v=2" height="180" />
+    <img alt="GitHub Streak" src="https://streak-stats.demolab.com?user=marcmantei&theme=default&hide_border=true&v=2" />
   </picture>
 </p>
 
