@@ -45,9 +45,9 @@ Started as a Digital Artist, evolved through Pipeline TD into software architect
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=marcmantei&show_icons=true&theme=github_dark&hide_border=true&hide_title=true&count_private=true" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=marcmantei&show_icons=true&theme=default&hide_border=true&hide_title=true&count_private=true" />
-    <img alt="GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=marcmantei&show_icons=true&theme=default&hide_border=true&hide_title=true&count_private=true" height="180" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-amber-sigma-33.vercel.app/api?username=marcmantei&show_icons=true&theme=github_dark&hide_border=true&hide_title=true&count_private=true" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats-amber-sigma-33.vercel.app/api?username=marcmantei&show_icons=true&theme=default&hide_border=true&hide_title=true&count_private=true" />
+    <img alt="GitHub Stats" src="https://github-readme-stats-amber-sigma-33.vercel.app/api?username=marcmantei&show_icons=true&theme=default&hide_border=true&hide_title=true&count_private=true" height="180" />
   </picture>
   &nbsp;
   <picture>
