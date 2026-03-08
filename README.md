@@ -62,4 +62,3 @@ Started as a Digital Artist, evolved through Pipeline TD into software architect
   <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-light&hide_border=true&area=true" />
   <img alt="Contribution Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-light&hide_border=true&area=true" width="100%" />
 </picture>
-
