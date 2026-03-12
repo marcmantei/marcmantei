@@ -36,48 +36,57 @@ Started as a Digital Artist, evolved through Pipeline TD into software architect
 
 ### AI Agent Infrastructure
 
-I built and operate an autonomous agent network that functions as a one person software team.
+I built and operate an autonomous agent network that functions as a one-person software team.
 
-**The journey:** I first built a custom Agent Orchestrator that could react to GitHub events, manage Telegram communication, and coordinate coding tasks across multiple repositories. After proving the concept, I migrated to [Spacebot](https://github.com/AgenDev/spacebot), a Rust based agentic system, and built a heavily customized layer on top.
+**The journey:** I first built a custom Agent Orchestrator that could react to GitHub events, manage Telegram communication, and coordinate coding tasks across multiple repositories. After proving the concept, I migrated to [Spacebot](https://github.com/AgenDev/spacebot), a Rust-based agentic system, and built a heavily customized layer on top — including a dynamic project registry, GitHub App integration, and Tailscale Funnel for secure webhook delivery.
 
 **What it does today:**
 
 ```
-GitHub Issue created
+GitHub App (installed org-wide)
+       |  webhooks (push, issues, PRs, CI, reviews, comments)
+       v
+Tailscale Funnel (HTTPS, no open ports)
        |
        v
-  AI Agent (on dedicated server)
-       |
-       +---> Reads issue, explores codebase
-       +---> Writes structured PRD (acceptance criteria, technical context, edge cases)
-       +---> Assesses complexity (simple / medium / complex / planning)
-       +---> Creates isolated git worktree for the implementation
-       |
-       v
-  Worker(s) spawned based on complexity
-       |
-       +--- Simple:  1 worker implements directly
-       +--- Complex: Planning worker writes implementation plan
-       |             then implementation worker follows it
-       |
-       v
-  PR created, CI monitored
-       |
-       +---> CI fails? Auto-spawns fix worker
-       +---> Review requested? Worker addresses feedback
-       +---> PR merged? Worktree cleaned up automatically
+Webhook Bridge ──> Spacebot/Lira (dedicated server)
+                         |
+                         ├── Dynamic Project Registry
+                         |     auto-discovers repos via GitHub API
+                         |     auto-clones new repos
+                         |     notifies via Telegram
+                         |
+                         ├── AI Agent receives event
+                         |     ├── Reads issue, explores codebase
+                         |     ├── Writes structured PRD
+                         |     ├── Assesses complexity
+                         |     └── Creates isolated git worktree
+                         |
+                         v
+                   Worker(s) spawned
+                         |
+                         ├── Simple:  1 worker implements directly
+                         ├── Complex: Planning → Implementation
+                         |
+                         v
+                   PR created, CI monitored
+                         |
+                         ├── CI fails → Auto-spawns fix worker
+                         ├── Review requested → Addresses feedback
+                         └── PR merged → Worktree cleaned up
 ```
 
 **Key capabilities:**
-- Reacts to GitHub webhooks across multiple repositories (issues, PRs, CI, reviews)
-- Enriches issues with auto generated PRDs before implementation
+- GitHub App with org-wide webhook delivery via Tailscale Funnel (zero open ports)
+- Dynamic Project Registry: auto-discovers, auto-clones, and tracks all repos
+- Enriches issues with auto-generated PRDs before implementation
 - Isolated git worktrees enable parallel workers on the same project
-- Complexity based orchestration (sequential planning + implementation for complex tasks)
-- Image generation via Gemini API with on the fly style extraction from project code
-- Cross channel coordination: GitHub webhooks, Telegram notifications, worker management
-- Full config backup system with daily automated snapshots
+- Complexity-based orchestration (sequential planning + implementation for complex tasks)
+- Image generation via Gemini API with on-the-fly style extraction from project code
+- Cross-channel coordination: GitHub webhooks, Telegram notifications, worker management
+- Hot-reloadable config with daily automated backups
 
-**Stack:** Spacebot (Rust) · Claude Opus/Haiku · Gemini Flash · Cloudflare Tunnels · systemd · Tailscale
+**Stack:** Spacebot (Rust) · Claude Opus/Haiku · Gemini Flash · Tailscale Funnel · GitHub App · SQLite · systemd
 
 This setup lets me operate like a small software company: I create issues, and the agent network handles PRD writing, implementation, CI fixes, and review responses autonomously.
 
