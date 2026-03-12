@@ -30,6 +30,56 @@ Started as a Digital Artist, evolved through Pipeline TD into software architect
 
 - **AI / ML:** LLM application patterns, RAG architectures, intelligent production automation
 - **Developer Tooling:** self-healing systems, workflow orchestration, reducing friction at scale
+- **AI Agent Infrastructure:** building autonomous dev agents that handle the full lifecycle from issue to PR
+
+---
+
+### AI Agent Infrastructure
+
+I built and operate an autonomous agent network that functions as a one person software team.
+
+**The journey:** I first created [OpenClaw](https://github.com/marcmantei/agent-orchestrator), a custom agent orchestrator that could react to GitHub events, manage Telegram communication, and coordinate coding tasks across multiple repos. After proving the concept, I migrated to [Spacebot](https://github.com/AgenDev/spacebot), a Rust based agentic system, and built a heavily customized layer on top.
+
+**What it does today:**
+
+```
+GitHub Issue created
+       |
+       v
+  Lira (AI Agent on dedicated server "liralot")
+       |
+       +---> Reads issue, explores codebase
+       +---> Writes structured PRD (acceptance criteria, technical context, edge cases)
+       +---> Assesses complexity (simple / medium / complex / planning)
+       +---> Creates isolated git worktree for the implementation
+       |
+       v
+  Worker(s) spawned based on complexity
+       |
+       +--- Simple:  1 worker implements directly
+       +--- Complex: Planning worker writes implementation plan
+       |             then implementation worker follows it
+       |
+       v
+  PR created, CI monitored
+       |
+       +---> CI fails? Auto-spawns fix worker
+       +---> Review requested? Worker addresses feedback
+       +---> PR merged? Worktree cleaned up automatically
+```
+
+**Key capabilities:**
+- Reacts to GitHub webhooks across 6 repositories (issues, PRs, CI, reviews)
+- Enriches issues with auto-generated PRDs before implementation
+- Isolated git worktrees enable parallel workers on the same project
+- Complexity based orchestration (sequential planning + implementation for complex tasks)
+- Image generation via Gemini API with on the fly style extraction from project code
+- Cross-channel coordination: GitHub webhooks, Telegram notifications, worker management
+- Full config backup system with daily automated snapshots
+
+**Stack:** Spacebot (Rust) · Claude Opus/Haiku · Gemini Flash · Cloudflare Tunnels · systemd · Tailscale
+
+This setup lets me operate like a small software company: I create issues, and the agent network handles PRD writing, implementation, CI fixes, and review responses autonomously.
 
 ---
 
@@ -37,8 +87,8 @@ Started as a Digital Artist, evolved through Pipeline TD into software architect
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcmantei/)
 [![Website](https://img.shields.io/badge/marcmantei.com-555?style=flat&logo=safari&logoColor=white)](https://www.marcmantei.com)
-[![IMDb](https://img.shields.io/badge/IMDb-555?style=flat&logo=imdb&logoColor=white)](https://www.imdb.com/name/nm15608082/)
 [![Email](https://img.shields.io/badge/mail@marcmantei.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:mail@marcmantei.com)
+[![IMDb](https://img.shields.io/badge/IMDb-F5C518?style=flat&logo=imdb&logoColor=000)](https://www.imdb.com/name/nm15608082/)
 
 ---
 
