@@ -36,7 +36,8 @@ Started as a Digital Artist, evolved through Pipeline TD into software architect
 ### Let's connect
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcmantei/)
-[![Website](https://img.shields.io/badge/marcmantei.com-000?style=flat&logo=safari&logoColor=white)](https://www.marcmantei.com)
+[![Website](https://img.shields.io/badge/marcmantei.com-555?style=flat&logo=safari&logoColor=white)](https://www.marcmantei.com)
+[![IMDb](https://img.shields.io/badge/IMDb-555?style=flat&logo=imdb&logoColor=white)](https://www.imdb.com/name/nm15608082/)
 [![Email](https://img.shields.io/badge/mail@marcmantei.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:mail@marcmantei.com)
 
 ---
