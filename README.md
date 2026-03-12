@@ -38,7 +38,7 @@ Started as a Digital Artist, evolved through Pipeline TD into software architect
 
 I built and operate an autonomous agent network that functions as a one person software team.
 
-**The journey:** I first created [OpenClaw](https://github.com/marcmantei/agent-orchestrator), a custom agent orchestrator that could react to GitHub events, manage Telegram communication, and coordinate coding tasks across multiple repos. After proving the concept, I migrated to [Spacebot](https://github.com/AgenDev/spacebot), a Rust based agentic system, and built a heavily customized layer on top.
+**The journey:** I first built a custom Agent Orchestrator that could react to GitHub events, manage Telegram communication, and coordinate coding tasks across multiple repositories. After proving the concept, I migrated to [Spacebot](https://github.com/AgenDev/spacebot), a Rust based agentic system, and built a heavily customized layer on top.
 
 **What it does today:**
 
@@ -46,7 +46,7 @@ I built and operate an autonomous agent network that functions as a one person s
 GitHub Issue created
        |
        v
-  Lira (AI Agent on dedicated server "liralot")
+  AI Agent (on dedicated server)
        |
        +---> Reads issue, explores codebase
        +---> Writes structured PRD (acceptance criteria, technical context, edge cases)
@@ -69,12 +69,12 @@ GitHub Issue created
 ```
 
 **Key capabilities:**
-- Reacts to GitHub webhooks across 6 repositories (issues, PRs, CI, reviews)
-- Enriches issues with auto-generated PRDs before implementation
+- Reacts to GitHub webhooks across multiple repositories (issues, PRs, CI, reviews)
+- Enriches issues with auto generated PRDs before implementation
 - Isolated git worktrees enable parallel workers on the same project
 - Complexity based orchestration (sequential planning + implementation for complex tasks)
 - Image generation via Gemini API with on the fly style extraction from project code
-- Cross-channel coordination: GitHub webhooks, Telegram notifications, worker management
+- Cross channel coordination: GitHub webhooks, Telegram notifications, worker management
 - Full config backup system with daily automated snapshots
 
 **Stack:** Spacebot (Rust) · Claude Opus/Haiku · Gemini Flash · Cloudflare Tunnels · systemd · Tailscale
