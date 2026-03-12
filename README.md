@@ -49,7 +49,7 @@ GitHub App (installed org-wide)
 Tailscale Funnel (HTTPS, no open ports)
        |
        v
-Webhook Bridge ──> Spacebot/Lira (dedicated server)
+Webhook Bridge ──> Dedicated Server
                          |
                          ├── Dynamic Project Registry
                          |     auto-discovers repos via GitHub API
