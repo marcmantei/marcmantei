@@ -52,42 +52,47 @@ I built and operate an autonomous agent network that functions as a one-person s
 **What it does today:**
 
 ```
- ┌─────────────────────────────────────────────────────────────┐
- │  GitHub App (org-wide webhooks)                             │
- │  issues · PRs · CI · reviews · comments · push             │
- └────────────────────────┬────────────────────────────────────┘
-                          ▼
- ┌─────────────────────────────────────────────────────────────┐
- │  Tailscale Funnel (HTTPS, zero open ports)                  │
- └────────────────────────┬────────────────────────────────────┘
-                          ▼
- ┌─────────────────────────────────────────────────────────────┐
- │  Dedicated Server                                           │
- │                                                             │
- │  ┌─────────────────┐  ┌──────────────────────────────────┐  │
- │  │ Project Registry │  │ AI Agent                         │  │
- │  │                  │  │                                  │  │
- │  │ auto-discover    │  │ explore codebase                 │  │
- │  │ auto-clone       │──▶ write PRD                        │  │
- │  │ track repos      │  │ assess complexity                │  │
- │  │ notify Telegram  │  │ create worktree                  │  │
- │  └─────────────────┘  └───────────┬──────────────────────┘  │
- │                                   ▼                         │
- │           ┌───────────────────────────────────────┐         │
- │           │ Workers (isolated git worktrees)       │         │
- │           │                                        │         │
- │           │ simple ──▶ 1 worker implements         │         │
- │           │ complex ──▶ plan → implement           │         │
- │           └───────────────────┬───────────────────┘         │
- │                               ▼                             │
- │           ┌───────────────────────────────────────┐         │
- │           │ PR ──▶ CI ──▶ Review ──▶ Merge        │         │
- │           │  │                          │         │         │
- │           │  └── fix worker ◀── fail    │         │         │
- │           │  └── revision ◀── feedback  │         │         │
- │           │  └── cleanup ◀── merged ────┘         │         │
- │           └───────────────────────────────────────┘         │
- └─────────────────────────────────────────────────────────────┘
+                    ┌───────────────────────────────────────┐
+                    │         GitHub App (org-wide)          │
+                    │  issues · PRs · CI · reviews · push   │
+                    └──────────────────┬────────────────────┘
+                                       │ webhooks
+                                       ▼
+                    ┌───────────────────────────────────────┐
+                    │   Tailscale Funnel · HTTPS · no open  │
+                    │            ports exposed              │
+                    └──────────────────┬────────────────────┘
+                                       │
+          ┌────────────────────────────────────────────────────────────┐
+          │                    Dedicated Server                        │
+          │                                                            │
+          │   ┌──────────────────┐       ┌──────────────────────────┐  │
+          │   │ Project Registry │       │ AI Agent                 │  │
+          │   │                  │       │                          │  │
+          │   │  auto-discover ──┼──────▶│  read issue + codebase   │  │
+          │   │  auto-clone      │       │  write structured PRD    │  │
+          │   │  track repos     │       │  assess complexity       │  │
+          │   │  notify Telegram │       │  create git worktree     │  │
+          │   └──────────────────┘       └────────────┬─────────────┘  │
+          │                                           │                │
+          │                                           ▼                │
+          │                ┌─────────────────────────────────────────┐  │
+          │                │         Workers (git worktrees)         │  │
+          │                │                                         │  │
+          │                │  simple task ──▶ 1 worker implements    │  │
+          │                │  complex task ──▶ planner + implementer │  │
+          │                └──────────────────────┬──────────────────┘  │
+          │                                       │                    │
+          │                                       ▼                    │
+          │                ┌─────────────────────────────────────────┐  │
+          │                │              PR Lifecycle               │  │
+          │                │                                         │  │
+          │                │  PR ──▶ CI ──▶ Review ──▶ Merge         │  │
+          │                │       │              │          │       │  │
+          │                │       ▼              ▼          ▼       │  │
+          │                │    fix worker    revision    cleanup    │  │
+          │                └─────────────────────────────────────────┘  │
+          └────────────────────────────────────────────────────────────┘
 ```
 
 **Key capabilities:**
@@ -103,6 +108,74 @@ I built and operate an autonomous agent network that functions as a one-person s
 **Stack:** Spacebot (Rust) · Claude Opus/Haiku · Gemini Flash · Tailscale Funnel · GitHub App · SQLite · systemd
 
 This setup lets me operate like a small software company: I create issues, and the agent network handles PRD writing, implementation, CI fixes, and review responses autonomously.
+
+---
+
+### Code Knowledge Graph
+
+I built a code intelligence engine in Rust that parses source code into a queryable knowledge graph — giving AI agents deep architectural understanding of any codebase before they write a single line.
+
+**The idea:** AI agents waste tokens and make poor decisions when they don't understand how a codebase fits together. Instead of letting them grep around blindly, I built a system that pre-analyzes code structure — extracting symbols, mapping call relationships, detecting functional modules, and tracing execution flows — then exposes it all through MCP, a CLI, and a custom Cypher query engine.
+
+**How it works:**
+
+```
+          ┌────────────────────────────────────────────────────────────┐
+          │                      Source Code                           │
+          └──────────────────────────┬─────────────────────────────────┘
+                                     │ tree-sitter
+                                     ▼
+          ┌────────────────────────────────────────────────────────────┐
+          │                    Symbol Extraction                       │
+          │                                                            │
+          │  functions · classes · methods · types · interfaces        │
+          │  imports · variables · constants · enums                   │
+          │                                                            │
+          │  Pass 1: parse all files ──▶ extract symbols               │
+          │  Pass 2: resolve calls ──▶ map relationships               │
+          └──────────────────────────┬─────────────────────────────────┘
+                                     │
+               ┌─────────────────────┼─────────────────────┐
+               ▼                     ▼                     ▼
+  ┌──────────────────────┐ ┌──────────────────┐ ┌───────────────────────┐
+  │   Vector Embeddings  │ │    Community     │ │   Process Tracing     │
+  │                      │ │    Detection     │ │                       │
+  │  384-dim vectors     │ │                  │ │  detect entry points   │
+  │  via fastembed       │ │  Leiden algo     │ │  DFS through call      │
+  │  stored in LanceDB  │ │  clusters tightly│ │  graph to trace        │
+  │                      │ │  coupled symbols │ │  execution flows       │
+  │  enables semantic    │ │  into functional │ │                       │
+  │  similarity search   │ │  modules         │ │  maps how code        │
+  └──────────────────────┘ └──────────────────┘ │  actually runs         │
+                                                └───────────────────────┘
+                                     │
+                                     ▼
+          ┌────────────────────────────────────────────────────────────┐
+          │                     Query Layer                            │
+          │                                                            │
+          │  ┌────────────┐  ┌────────────────┐  ┌─────────────────┐  │
+          │  │     MCP     │  │      CLI       │  │  Cypher Engine  │  │
+          │  │             │  │                │  │                 │  │
+          │  │  11 tools   │  │  analyze       │  │  MATCH patterns │  │
+          │  │  8 resources│  │  search        │  │  WHERE filters  │  │
+          │  │  stdio      │  │  impact        │  │  graph traversal│  │
+          │  │  transport   │  │  communities   │  │  read-only      │  │
+          │  └────────────┘  └────────────────┘  └─────────────────┘  │
+          └────────────────────────────────────────────────────────────┘
+```
+
+**Key capabilities:**
+- Parses TypeScript, JavaScript, and Python via tree-sitter with two-pass symbol resolution
+- Hybrid search: BM25 keyword + vector semantic + Reciprocal Rank Fusion
+- Community detection via Leiden algorithm — surfaces functional modules automatically
+- Impact analysis: parses git diffs, then BFS through the call graph to find blast radius
+- Symbol rename with full cross-reference resolution and preview before applying
+- MCP server with 11 tools and 8 resources for direct AI agent integration
+- Custom Cypher dialect for graph traversal queries (read-only, no write operations)
+
+**Stack:** Rust · tree-sitter · LanceDB · fastembed · graphrs · rmcp · Cypher dialect
+
+The engine is structured as a 6-crate Rust workspace — core analysis, storage, MCP server, Cypher engine, benchmarks, and a CLI — designed to be embedded into AI developer tools or run standalone.
 
 ---
 
