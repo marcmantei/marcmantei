@@ -51,48 +51,40 @@ I built and operate an autonomous agent network that functions as a one-person s
 
 **What it does today:**
 
-```
-                    ┌───────────────────────────────────────┐
-                    │         GitHub App (org-wide)          │
-                    │  issues · PRs · CI · reviews · push   │
-                    └──────────────────┬────────────────────┘
-                                       │ webhooks
-                                       ▼
-                    ┌───────────────────────────────────────┐
-                    │   Tailscale Funnel · HTTPS · no open  │
-                    │            ports exposed              │
-                    └──────────────────┬────────────────────┘
-                                       │
-          ┌────────────────────────────────────────────────────────────┐
-          │                    Dedicated Server                        │
-          │                                                            │
-          │   ┌──────────────────┐       ┌──────────────────────────┐  │
-          │   │ Project Registry │       │ AI Agent                 │  │
-          │   │                  │       │                          │  │
-          │   │  auto-discover ──┼──────▶│  read issue + codebase   │  │
-          │   │  auto-clone      │       │  write structured PRD    │  │
-          │   │  track repos     │       │  assess complexity       │  │
-          │   │  notify Telegram │       │  create git worktree     │  │
-          │   └──────────────────┘       └────────────┬─────────────┘  │
-          │                                           │                │
-          │                                           ▼                │
-          │                ┌─────────────────────────────────────────┐  │
-          │                │         Workers (git worktrees)         │  │
-          │                │                                         │  │
-          │                │  simple task ──▶ 1 worker implements    │  │
-          │                │  complex task ──▶ planner + implementer │  │
-          │                └──────────────────────┬──────────────────┘  │
-          │                                       │                    │
-          │                                       ▼                    │
-          │                ┌─────────────────────────────────────────┐  │
-          │                │              PR Lifecycle               │  │
-          │                │                                         │  │
-          │                │  PR ──▶ CI ──▶ Review ──▶ Merge         │  │
-          │                │       │              │          │       │  │
-          │                │       ▼              ▼          ▼       │  │
-          │                │    fix worker    revision    cleanup    │  │
-          │                └─────────────────────────────────────────┘  │
-          └────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    GH["<b>GitHub App</b> (org-wide)<br/>issues · PRs · CI · reviews · push"]
+    TS["<b>Tailscale Funnel</b><br/>HTTPS · zero open ports"]
+    GH -- webhooks --> TS
+
+    subgraph SERVER ["Dedicated Server"]
+        direction TB
+
+        subgraph INTAKE [" "]
+            direction LR
+            REG["<b>Project Registry</b><br/>auto-discover<br/>auto-clone<br/>track repos<br/>notify Telegram"]
+            AGENT["<b>AI Agent</b><br/>read issue + codebase<br/>write structured PRD<br/>assess complexity<br/>create git worktree"]
+            REG -- "new event" --> AGENT
+        end
+
+        subgraph WORK ["Workers (isolated git worktrees)"]
+            direction LR
+            SIMPLE["simple task → 1 worker"]
+            COMPLEX["complex task → planner + implementer"]
+        end
+
+        subgraph LIFECYCLE ["PR Lifecycle"]
+            direction LR
+            PR["PR"] --> CI["CI"] --> REVIEW["Review"] --> MERGE["Merge"]
+            CI -. "fail" .-> FIX["fix worker"]
+            REVIEW -. "feedback" .-> REV["revision worker"]
+            MERGE -. "merged" .-> CLEAN["cleanup"]
+        end
+
+        INTAKE --> WORK --> LIFECYCLE
+    end
+
+    TS --> SERVER
 ```
 
 **Key capabilities:**
@@ -119,49 +111,35 @@ I built a code intelligence engine in Rust that parses source code into a querya
 
 **How it works:**
 
-```
-          ┌────────────────────────────────────────────────────────────┐
-          │                      Source Code                           │
-          └──────────────────────────┬─────────────────────────────────┘
-                                     │ tree-sitter
-                                     ▼
-          ┌────────────────────────────────────────────────────────────┐
-          │                    Symbol Extraction                       │
-          │                                                            │
-          │  functions · classes · methods · types · interfaces        │
-          │  imports · variables · constants · enums                   │
-          │                                                            │
-          │  Pass 1: parse all files ──▶ extract symbols               │
-          │  Pass 2: resolve calls ──▶ map relationships               │
-          └──────────────────────────┬─────────────────────────────────┘
-                                     │
-               ┌─────────────────────┼─────────────────────┐
-               ▼                     ▼                     ▼
-  ┌──────────────────────┐ ┌──────────────────┐ ┌───────────────────────┐
-  │   Vector Embeddings  │ │    Community     │ │   Process Tracing     │
-  │                      │ │    Detection     │ │                       │
-  │  384-dim vectors     │ │                  │ │  detect entry points   │
-  │  via fastembed       │ │  Leiden algo     │ │  DFS through call      │
-  │  stored in LanceDB  │ │  clusters tightly│ │  graph to trace        │
-  │                      │ │  coupled symbols │ │  execution flows       │
-  │  enables semantic    │ │  into functional │ │                       │
-  │  similarity search   │ │  modules         │ │  maps how code        │
-  └──────────────────────┘ └──────────────────┘ │  actually runs         │
-                                                └───────────────────────┘
-                                     │
-                                     ▼
-          ┌────────────────────────────────────────────────────────────┐
-          │                     Query Layer                            │
-          │                                                            │
-          │  ┌────────────┐  ┌────────────────┐  ┌─────────────────┐  │
-          │  │     MCP     │  │      CLI       │  │  Cypher Engine  │  │
-          │  │             │  │                │  │                 │  │
-          │  │  11 tools   │  │  analyze       │  │  MATCH patterns │  │
-          │  │  8 resources│  │  search        │  │  WHERE filters  │  │
-          │  │  stdio      │  │  impact        │  │  graph traversal│  │
-          │  │  transport   │  │  communities   │  │  read-only      │  │
-          │  └────────────┘  └────────────────┘  └─────────────────┘  │
-          └────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    SRC["<b>Source Code</b><br/>TypeScript · JavaScript · Python"]
+    SRC -- "tree-sitter" --> EXTRACT
+
+    subgraph EXTRACT ["Symbol Extraction"]
+        direction TB
+        P1["Pass 1: parse all files → extract symbols<br/>functions · classes · methods · types · interfaces"]
+        P2["Pass 2: resolve calls → map relationships"]
+        P1 --> P2
+    end
+
+    EXTRACT --> VEC & COM & PROC
+
+    subgraph ANALYSIS [" "]
+        direction LR
+        VEC["<b>Vector Embeddings</b><br/>384-dim via fastembed<br/>stored in LanceDB<br/>semantic similarity"]
+        COM["<b>Community Detection</b><br/>Leiden algorithm<br/>clusters coupled symbols<br/>into functional modules"]
+        PROC["<b>Process Tracing</b><br/>detect entry points<br/>DFS through call graph<br/>trace execution flows"]
+    end
+
+    ANALYSIS --> QUERY
+
+    subgraph QUERY ["Query Layer"]
+        direction LR
+        MCP["<b>MCP Server</b><br/>11 tools · 8 resources<br/>stdio transport"]
+        CLI["<b>CLI</b><br/>analyze · search<br/>impact · communities"]
+        CYP["<b>Cypher Engine</b><br/>MATCH patterns<br/>WHERE filters<br/>graph traversal"]
+    end
 ```
 
 **Key capabilities:**
