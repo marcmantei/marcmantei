@@ -65,6 +65,7 @@ The system uses 3-tier LLM routing: a dispatcher (Claude Opus) analyzes each req
 - Worker isolation in git worktrees for parallel autonomous development across multiple repositories
 - Persistent memory systems and state tracking across agent sessions
 - Full PR lifecycle management: CI failure to auto-fix, review feedback to auto-revision
+- Prompt iteration and output validation via Langfuse for continuous agent quality improvement
 - 7,300+ automated task commits since January 2025
 
 **Stack:** Rust · Python · GitHub App (multi-repo) · Cloudflare Tunnel
@@ -73,7 +74,7 @@ The system uses 3-tier LLM routing: a dispatcher (Claude Opus) analyzes each req
 
 ### AI Orchestration Infrastructure
 
-Self-hosted production infrastructure for AI workflow automation, running 12+ Docker services with resource-budgeted orchestration on dedicated hardware.
+Production infrastructure for AI workflow automation, running 12+ Docker services with resource-budgeted orchestration.
 
 - Apache Airflow (Scheduler + CeleryExecutor) for DAG-based AI task scheduling, triggering agent workflows via REST API
 - Qdrant vector database with GPU acceleration (CUDA) for embedding workloads and semantic search
