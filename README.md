@@ -98,4 +98,4 @@ Instead of letting agents grep through files and guess at structure, Myceliums g
 - Impact analysis: parses git diffs, then BFS through the call graph to find blast radius
 - 12 MCP tools with one-command setup for 12 platforms
 
-**Stack:** Rust · tree-sitter · LanceDB · fastembed · all-MiniLM-L6-v2 · graphrs · rmcp · Cypher dialect
+**Stack:** Rust · tree-sitter · LanceDB · fastembed · Cypher
