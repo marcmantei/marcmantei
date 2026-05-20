@@ -1,4 +1,4 @@
-# Hey, I'm Marc
+# Marc Mantei — AI Engineer
 
 I build AI automation pipelines, agentic systems, and the orchestration infrastructure that makes them work in production.
 
