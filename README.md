@@ -13,6 +13,22 @@ I build AI automation pipelines, agentic systems, and the orchestration infrastr
 
 ---
 
+### What I work with
+
+![Rust](https://img.shields.io/badge/-Rust-555?style=flat-square&logo=rust&logoColor=fff)
+![Python](https://img.shields.io/badge/-Python-555?style=flat-square&logo=python&logoColor=fff)
+![TypeScript](https://img.shields.io/badge/-TypeScript-555?style=flat-square&logo=typescript&logoColor=fff)
+![Docker](https://img.shields.io/badge/-Docker-555?style=flat-square&logo=docker&logoColor=fff)
+![Apache Airflow](https://img.shields.io/badge/-Airflow-555?style=flat-square&logo=apacheairflow&logoColor=fff)
+![Qdrant](https://img.shields.io/badge/-Qdrant-555?style=flat-square&logo=qdrant&logoColor=fff)
+![Prometheus](https://img.shields.io/badge/-Prometheus-555?style=flat-square&logo=prometheus&logoColor=fff)
+![Grafana](https://img.shields.io/badge/-Grafana-555?style=flat-square&logo=grafana&logoColor=fff)
+![Cloudflare](https://img.shields.io/badge/-Cloudflare-555?style=flat-square&logo=cloudflare&logoColor=fff)
+![Linux](https://img.shields.io/badge/-Linux-555?style=flat-square&logo=linux&logoColor=fff)
+![Git](https://img.shields.io/badge/-Git-555?style=flat-square&logo=git&logoColor=fff)
+
+---
+
 ### GitHub Stats
 
 <p align="center">
@@ -83,19 +99,3 @@ Instead of letting agents grep through files and guess at structure, Myceliums g
 - 12 MCP tools with one-command setup for 12 platforms (Claude Code, Cursor, VS Code, Windsurf, Zed, JetBrains, and more)
 
 **Stack:** Rust · tree-sitter · LanceDB · fastembed · all-MiniLM-L6-v2 · graphrs · rmcp · Cypher dialect
-
----
-
-### What I work with
-
-![Rust](https://img.shields.io/badge/-Rust-555?style=flat-square&logo=rust&logoColor=fff)
-![Python](https://img.shields.io/badge/-Python-555?style=flat-square&logo=python&logoColor=fff)
-![TypeScript](https://img.shields.io/badge/-TypeScript-555?style=flat-square&logo=typescript&logoColor=fff)
-![Docker](https://img.shields.io/badge/-Docker-555?style=flat-square&logo=docker&logoColor=fff)
-![Apache Airflow](https://img.shields.io/badge/-Airflow-555?style=flat-square&logo=apacheairflow&logoColor=fff)
-![Qdrant](https://img.shields.io/badge/-Qdrant-555?style=flat-square&logo=qdrant&logoColor=fff)
-![Prometheus](https://img.shields.io/badge/-Prometheus-555?style=flat-square&logo=prometheus&logoColor=fff)
-![Grafana](https://img.shields.io/badge/-Grafana-555?style=flat-square&logo=grafana&logoColor=fff)
-![Cloudflare](https://img.shields.io/badge/-Cloudflare-555?style=flat-square&logo=cloudflare&logoColor=fff)
-![Linux](https://img.shields.io/badge/-Linux-555?style=flat-square&logo=linux&logoColor=fff)
-![Git](https://img.shields.io/badge/-Git-555?style=flat-square&logo=git&logoColor=fff)
