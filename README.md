@@ -49,9 +49,9 @@ I build AI automation pipelines, agentic systems, and the orchestration infrastr
 
 ### Current focus
 
+- **AI infrastructure:** self-hosted orchestration stacks with Airflow, Qdrant, and full observability pipelines
 - **Multi-agent orchestration:** autonomous AI agents with LLM routing, persistent memory, and webhook-driven automation
 - **Code intelligence:** giving AI agents structural understanding of codebases via knowledge graphs and hybrid search
-- **AI infrastructure:** self-hosted orchestration stacks with Airflow, Qdrant, and full observability pipelines
 
 ---
 
