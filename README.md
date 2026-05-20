@@ -77,12 +77,12 @@ Self-hosted production infrastructure for AI workflow automation, running 12+ Do
 
 - Apache Airflow (Scheduler + CeleryExecutor) for DAG-based AI task scheduling, triggering agent workflows via REST API
 - Qdrant vector database with GPU acceleration (CUDA) for embedding workloads and semantic search
-- Full observability pipeline: OpenTelemetry Collector, Prometheus, Loki (log aggregation), Grafana dashboards, Blackbox synthetic probes, cAdvisor + Node Exporter for container and host metrics
-- RBAC per data domain for AI agent access control, audit logging of every agent query, rate limiting, and GDPR sanitization on PII-bearing results
+- Full observability pipeline: OpenTelemetry Collector, Prometheus, Loki, Grafana dashboards
+- RBAC per data domain for AI agent access control and GDPR sanitization on PII-bearing results
 - PostgreSQL + Redis data layer; Traefik reverse proxy with automated TLS
 - Tailscale mesh VPN for secure remote access, zero public ports for admin interfaces
 
-**Stack:** Docker Compose · Apache Airflow · Qdrant · PostgreSQL · Redis · Prometheus · Loki · Grafana · OpenTelemetry · Blackbox Exporter · Traefik · Tailscale
+**Stack:** Docker Compose · Apache Airflow · Qdrant · PostgreSQL · Redis · Prometheus · Loki · Grafana · OpenTelemetry · Traefik · Tailscale
 
 ---
 
@@ -96,6 +96,6 @@ Instead of letting agents grep through files and guess at structure, Myceliums g
 - Parses 23 languages via tree-sitter with two-pass symbol resolution
 - Hybrid search: BM25 + vector embeddings (all-MiniLM-L6-v2 via fastembed) + Reciprocal Rank Fusion, with optional cross-encoder reranking (BAAI/bge-reranker-base) and IVF-PQ indexing for large repositories
 - Impact analysis: parses git diffs, then BFS through the call graph to find blast radius
-- 12 MCP tools with one-command setup for 12 platforms (Claude Code, Cursor, VS Code, Windsurf, Zed, JetBrains, and more)
+- 12 MCP tools with one-command setup for 12 platforms
 
 **Stack:** Rust · tree-sitter · LanceDB · fastembed · all-MiniLM-L6-v2 · graphrs · rmcp · Cypher dialect
