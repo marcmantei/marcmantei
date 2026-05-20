@@ -67,7 +67,7 @@ The system uses 3-tier LLM routing: a dispatcher (Claude Opus) analyzes each req
 - Full PR lifecycle management: CI failure to auto-fix, review feedback to auto-revision
 - 7,300+ automated task commits since January 2025
 
-**Stack:** Rust · Claude Opus/Haiku · Gemini Flash · GitHub App · Cloudflare Tunnel · SQLite · systemd
+**Stack:** Rust · Python · GitHub App (multi-repo) · Cloudflare Tunnel
 
 ---
 
