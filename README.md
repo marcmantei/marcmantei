@@ -1,6 +1,6 @@
-# Marc Mantei — Senior AI Engineer
+# Marc Mantei · Senior AI Engineer
 
-I build self-regulating AI systems: closed control loops that plan, implement, review, and ship software — with the human as approver, not operator.
+I build self-regulating AI systems: closed control loops that plan, implement, review, and ship software with the human as approver, not operator.
 
 10+ years of production infrastructure behind it, from terabyte-scale data pipelines at Netflix (Eyeline Studios) to autonomous multi-agent platforms. My thesis: AI work is only trustworthy inside a feedback loop with a measured signal, an actuator, a setpoint, and a proof.
 
@@ -13,38 +13,40 @@ I build self-regulating AI systems: closed control loops that plan, implement, r
 
 ---
 
-### Shipyard — Self-Managing AI Platform
+### Shipyard · Self-Managing AI Platform
 
-A self-hosted platform where AI owns the software lifecycle end to end: issue triage → PRD → implementation → independent review → merge → report. ~450 PRs shipped in its first 9 weeks — 77 commits authored by the platform's own bots.
+A self-hosted platform where AI owns the software lifecycle end to end: issue triage → PRD → implementation → independent review → merge → report. ~450 PRs shipped in its first 9 weeks, 77 commits of them authored by the platform's own bots.
 
 ![Shipyard Mission Control, live: a 7-wave epic shipped end to end by autonomous workers](assets/mission-control.webp)
 
-*Mission Control, live: a 7-wave epic shipped end to end by autonomous workers — every issue with its PR, token count, and cost.*
+*Mission Control, live: a 7-wave epic shipped end to end by autonomous workers. Every issue with its PR, token count, and cost.*
 
-The architecture separates deterministic orchestration (Apache Airflow: routing, RBAC, retries) from reasoning (a Rust agent runtime on Claude Opus). Around that core runs a fleet of **~20 closed control loops**, each with a measured signal, an actuator, a setpoint — and a proof. Ten complete loop scenarios (convergence, oscillation, plateau, crash-resume) are replayed as regression tests.
+The architecture separates deterministic orchestration (Apache Airflow: routing, RBAC, retries) from reasoning (a Rust agent runtime on Claude Opus). Around that core runs a fleet of **~20 closed control loops**, each with a measured signal, an actuator, a setpoint, and a proof. Ten complete loop scenarios (convergence, oscillation, plateau, crash-resume) are replayed as regression tests.
 
-- **Review ↔ fix loop** — findings → adversarial verification → weighted error → fix worker → re-review. Converged bot PRs auto-merge behind hard gates; plateau or oscillation escalates to a human
-- **LLM-as-judge quality gates** — every deliverable scored against a rubric before it ships; dual-judge divergence fails toward a human
-- **Self-healing** — watchdogs detect worker timeouts, orphaned dispatches, and lost webhooks, classify the root cause, and remediate. Proven end to end: a recurring timeout auto-filed its own architecture issue, which became the fix PR the healer now carries
-- **Hill-climbing engine** — every 6 hours, production traces are clustered into failure patterns and filed as improvement issues. The system proposes; it never self-modifies
-- **Confidence calibration** — weekly Brier-score checks verify that a self-reported 0.8 actually means ~80% correct
+- **Review ↔ fix loop**: findings → adversarial verification → weighted error → fix worker → re-review. Converged bot PRs auto-merge behind hard gates; plateau or oscillation escalates to a human
+- **LLM-as-judge quality gates**: every deliverable scored against a rubric before it ships; dual-judge divergence fails toward a human
+- **Self-healing**: watchdogs detect worker timeouts, orphaned dispatches, and lost webhooks, classify the root cause, and remediate. Proven end to end: a recurring timeout auto-filed its own architecture issue, which became the fix PR the healer now carries
+- **Hill-climbing engine**: every 6 hours, production traces are clustered into failure patterns and filed as improvement issues. The system proposes; it never self-modifies
+- **Confidence calibration**: weekly Brier-score checks verify that a self-reported 0.8 actually means ~80% correct
 
-![Per-step cost breakdown: PRD rounds, build, review — each with tokens, calls, and dollar cost](assets/mission-control-cost.webp)
+![Live loop state of open PRs: error trajectory converging to zero, judge scores, and event-triggered auto-merge gates](assets/review-fix-loops.webp)
 
-*Full cost transparency: where $17.73 went, step by step — PRD rounds, builds, reviews, each with tokens and dollar cost.*
+*The review↔fix loops, live: each PR with its error trajectory (2 → 1 → 0), judge score, and convergence state. Converged PRs wait on event-triggered auto-merge gates.*
 
-Guardrails are structural: the worker that builds a PR never reviews it, no agent merges its own work, every event passes an RBAC gauntlet, and every LLM call is traced with per-generation cost (Langfuse + Prometheus/Grafana). 20+ containers on my own hardware — zero infrastructure cost.
+Guardrails are structural: the worker that builds a PR never reviews it, no agent merges its own work, every event passes an RBAC gauntlet, and every LLM call is traced with per-generation cost (Langfuse + Prometheus/Grafana). 20+ containers on my own hardware, zero infrastructure cost. Orchestration overhead is measured, not guessed: ~10% of total spend, tracked per generation in Grafana.
+
+![Grafana panels: implementation vs orchestration cost, and a measured orchestration overhead of 10.1 percent](assets/orchestration-overhead.webp)
 
 **Scale:** ~66k LOC · 40 Airflow DAGs · 109 test files · 20+ containers
 **Stack:** Python · Apache Airflow · Rust agent runtime · Claude Opus/Haiku · Langfuse · Prometheus · Loki · Grafana · PostgreSQL · Docker
 
 ---
 
-### Myceliums — Code Knowledge Graph
+### Myceliums · Code Knowledge Graph
 
-A ~57,000-line Rust engine that parses codebases into a queryable knowledge graph, so AI agents understand architecture before they write a single line. Published on [crates.io](https://crates.io/crates/myc), Homebrew, and Docker. Fully local — no cloud, no telemetry.
+A ~57,000-line Rust engine that parses codebases into a queryable knowledge graph, so AI agents understand architecture before they write a single line. Published on [crates.io](https://crates.io/crates/myc), Homebrew, and Docker. Fully local: no cloud, no telemetry.
 
-![Myceliums — code intelligence infrastructure for AI agents](assets/myceliums-banner.png)
+![Myceliums: code intelligence infrastructure for AI agents](assets/myceliums-banner.png)
 
 Benchmarked against six real open-source repos (Django, FastAPI, Tokio, Express, Zod, Gin): **~99.8% token reduction** and ~94% fewer tool calls versus file-reading agents, with cached lookups around 50 ms.
 
