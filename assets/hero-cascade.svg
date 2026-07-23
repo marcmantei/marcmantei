@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#020617"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <marker id="arrowBig" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="11" markerHeight="8" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#facc15"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f97316"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="640" fill="url(#bgGrad)" rx="12"/>
+
+  <!-- Title -->
+  <text x="600" y="44" text-anchor="middle" fill="#f1f5f9" font-size="24" font-weight="bold">Plan software with an agent. Hand the plan over. Receive the software.</text>
+  <text x="600" y="68" text-anchor="middle" fill="#94a3b8" font-size="13">a self-hosted platform that turns an approved plan into shipped code — wave by wave, every step reviewed, traced, and under your control</text>
+
+  <!-- ═══ STATION 1: PLAN ═══ -->
+  <rect x="40" y="100" width="250" height="170" rx="10" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="165" y="128" text-anchor="middle" fill="#a5b4fc" font-size="12" font-weight="bold" letter-spacing="2">1 · PLAN</text>
+  <text x="165" y="152" text-anchor="middle" fill="#e0e7ff" font-size="12" font-weight="bold">You + an agent design it</text>
+  <text x="165" y="172" text-anchor="middle" fill="#a5b4fc" font-size="10">architecture · data model · features</text>
+  <rect x="65" y="186" width="200" height="64" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="165" y="204" text-anchor="middle" fill="#e0e7ff" font-size="10" font-weight="bold">Epic = the plan as issues</text>
+  <text x="165" y="219" text-anchor="middle" fill="#a5b4fc" font-size="9">Wave 1: schema · API · auth</text>
+  <text x="165" y="231" text-anchor="middle" fill="#a5b4fc" font-size="9">Wave 2: checkout · member area</text>
+  <text x="165" y="243" text-anchor="middle" fill="#a5b4fc" font-size="9">Wave 3: player · e2e tests</text>
+
+  <line x1="290" y1="185" x2="345" y2="185" stroke="#facc15" stroke-width="2.5" marker-end="url(#arrowBig)"/>
+
+  <!-- ═══ STATION 2: HANDOVER ═══ -->
+  <rect x="345" y="100" width="215" height="170" rx="10" fill="#422006" stroke="#facc15" stroke-width="2" filter="url(#glow)"/>
+  <text x="452" y="128" text-anchor="middle" fill="#fde68a" font-size="12" font-weight="bold" letter-spacing="2">2 · HANDOVER</text>
+  <text x="452" y="156" text-anchor="middle" fill="#fef9c3" font-size="13" font-weight="bold">"Orchestrate this."</text>
+  <text x="452" y="178" text-anchor="middle" fill="#fde68a" font-size="10">your ONE required approval —</text>
+  <text x="452" y="192" text-anchor="middle" fill="#fde68a" font-size="10">it moves from every PR up to the plan</text>
+  <text x="452" y="222" text-anchor="middle" fill="#fde68a" font-size="10">opt-in per issue: auto-merge ·</text>
+  <text x="452" y="236" text-anchor="middle" fill="#fde68a" font-size="10">opt-in gates: needs-approval</text>
+
+  <line x1="560" y1="185" x2="615" y2="185" stroke="#facc15" stroke-width="2.5" marker-end="url(#arrowBig)"/>
+
+  <!-- ═══ STATION 3: CASCADE ═══ -->
+  <rect x="615" y="100" width="305" height="170" rx="10" fill="#2a0a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="767" y="128" text-anchor="middle" fill="#fca5a5" font-size="12" font-weight="bold" letter-spacing="2">3 · THE CASCADE RUNS</text>
+  <text x="767" y="148" text-anchor="middle" fill="#fecaca" font-size="10">per issue, wave by wave — fully autonomous:</text>
+
+  <rect x="635" y="160" width="80" height="34" rx="5" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
+  <text x="675" y="174" text-anchor="middle" fill="#fecaca" font-size="9" font-weight="bold">worker</text>
+  <text x="675" y="186" text-anchor="middle" fill="#fca5a5" font-size="8">builds → PR</text>
+  <line x1="715" y1="177" x2="740" y2="177" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+  <rect x="740" y="160" width="86" height="34" rx="5" fill="#7c2d12" stroke="#fb923c" stroke-width="1"/>
+  <text x="783" y="174" text-anchor="middle" fill="#ffedd5" font-size="9" font-weight="bold">independent</text>
+  <text x="783" y="186" text-anchor="middle" fill="#fdba74" font-size="8">AI review</text>
+  <line x1="826" y1="177" x2="851" y2="177" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+  <rect x="851" y="160" width="52" height="34" rx="5" fill="#14532d" stroke="#4ade80" stroke-width="1"/>
+  <text x="877" y="174" text-anchor="middle" fill="#dcfce7" font-size="9" font-weight="bold">gated</text>
+  <text x="877" y="186" text-anchor="middle" fill="#86efac" font-size="8">merge</text>
+  <path d="M 783 194 C 760 214, 700 214, 678 196" fill="none" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrowRed)"/>
+  <text x="731" y="216" text-anchor="middle" fill="#fca5a5" font-size="8">fix loop (capped at 2)</text>
+
+  <text x="767" y="240" text-anchor="middle" fill="#fecaca" font-size="9">creator ≠ reviewer ≠ merger · wave N+1 starts only when</text>
+  <text x="767" y="253" text-anchor="middle" fill="#fecaca" font-size="9">wave N is merged AND the system is healthy</text>
+
+  <line x1="920" y1="185" x2="975" y2="185" stroke="#facc15" stroke-width="2.5" marker-end="url(#arrowBig)"/>
+
+  <!-- ═══ STATION 4: SOFTWARE ═══ -->
+  <rect x="975" y="100" width="185" height="170" rx="10" fill="#14532d" stroke="#4ade80" stroke-width="2" filter="url(#glow)"/>
+  <text x="1067" y="128" text-anchor="middle" fill="#86efac" font-size="12" font-weight="bold" letter-spacing="2">4 · SOFTWARE</text>
+  <text x="1067" y="158" text-anchor="middle" fill="#dcfce7" font-size="12" font-weight="bold">merged · deployed</text>
+  <text x="1067" y="174" text-anchor="middle" fill="#86efac" font-size="10">health-verified</text>
+  <text x="1067" y="200" text-anchor="middle" fill="#dcfce7" font-size="10" font-weight="bold">every issue closed</text>
+  <text x="1067" y="216" text-anchor="middle" fill="#86efac" font-size="10">epic ticked off 🎉</text>
+  <text x="1067" y="244" text-anchor="middle" fill="#86efac" font-size="9">Telegram: "all waves complete"</text>
+
+  <!-- ═══ CONTROL BAND ═══ -->
+  <rect x="40" y="300" width="1120" height="120" rx="10" fill="#422006" stroke="#facc15" stroke-width="1.5" opacity="0.95"/>
+  <text x="60" y="326" fill="#fde68a" font-size="12" font-weight="bold" letter-spacing="2">YOU STAY IN CONTROL — WITHOUT TYPING A LINE</text>
+
+  <rect x="60" y="340" width="255" height="62" rx="6" fill="#713f12" stroke="#facc15" stroke-width="1"/>
+  <text x="187" y="360" text-anchor="middle" fill="#fef9c3" font-size="10" font-weight="bold">The epic IS the live tree</text>
+  <text x="187" y="375" text-anchor="middle" fill="#fde68a" font-size="9">checkboxes ticked automatically ·</text>
+  <text x="187" y="388" text-anchor="middle" fill="#fde68a" font-size="9">progress bar per wave, rollups per cycle</text>
+
+  <rect x="335" y="340" width="255" height="62" rx="6" fill="#713f12" stroke="#facc15" stroke-width="1"/>
+  <text x="462" y="360" text-anchor="middle" fill="#fef9c3" font-size="10" font-weight="bold">Pause · resume · abort · kill</text>
+  <text x="462" y="375" text-anchor="middle" fill="#fde68a" font-size="9">one label freezes a project ·</text>
+  <text x="462" y="388" text-anchor="middle" fill="#fde68a" font-size="9">one variable freezes everything</text>
+
+  <rect x="610" y="340" width="255" height="62" rx="6" fill="#713f12" stroke="#facc15" stroke-width="1"/>
+  <text x="737" y="360" text-anchor="middle" fill="#fef9c3" font-size="10" font-weight="bold">Every step traced (Langfuse)</text>
+  <text x="737" y="375" text-anchor="middle" fill="#fde68a" font-size="9">one session per issue — every decision,</text>
+  <text x="737" y="388" text-anchor="middle" fill="#fde68a" font-size="9">generation and cost, deep-linked</text>
+
+  <rect x="885" y="340" width="255" height="62" rx="6" fill="#713f12" stroke="#facc15" stroke-width="1"/>
+  <text x="1012" y="360" text-anchor="middle" fill="#fef9c3" font-size="10" font-weight="bold">Escalates instead of guessing</text>
+  <text x="1012" y="375" text-anchor="middle" fill="#fde68a" font-size="9">non-converging reviews, red health,</text>
+  <text x="1012" y="388" text-anchor="middle" fill="#fde68a" font-size="9">plan defects → Telegram, to you</text>
+
+  <!-- ═══ FOUNDATION STRIP ═══ -->
+  <rect x="40" y="445" width="1120" height="150" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="60" y="471" fill="#94a3b8" font-size="12" font-weight="bold" letter-spacing="2">RUNS ON A SINGLE SELF-HOSTED MACHINE</text>
+
+  <text x="60" y="498" fill="#cbd5e1" font-size="10" font-weight="bold">Airflow routes</text>
+  <text x="60" y="513" fill="#64748b" font-size="9">webhook → classify → RBAC →</text>
+  <text x="60" y="525" fill="#64748b" font-size="9">DAG fleet (waves, reviews, healing)</text>
+
+  <text x="340" y="498" fill="#cbd5e1" font-size="10" font-weight="bold">SpaceBot thinks</text>
+  <text x="340" y="513" fill="#64748b" font-size="9">executor: builds in isolated worktrees ·</text>
+  <text x="340" y="525" fill="#64748b" font-size="9">supervisor: heals the platform itself</text>
+
+  <text x="620" y="498" fill="#cbd5e1" font-size="10" font-weight="bold">Quality is enforced</text>
+  <text x="620" y="513" fill="#64748b" font-size="9">independent reviews · eval gates ·</text>
+  <text x="620" y="525" fill="#64748b" font-size="9">self-healing · deploy-drift guards</text>
+
+  <text x="900" y="498" fill="#cbd5e1" font-size="10" font-weight="bold">Everything observable</text>
+  <text x="900" y="513" fill="#64748b" font-size="9">Langfuse · Grafana · Loki · Prometheus ·</text>
+  <text x="900" y="525" fill="#64748b" font-size="9">daily Telegram reports</text>
+
+  <text x="600" y="565" text-anchor="middle" fill="#94a3b8" font-size="10">This repository is built and maintained through its own cascade — the platform develops itself.</text>
+  <text x="600" y="582" text-anchor="middle" fill="#64748b" font-size="9">Architecture, flows and guards: see the diagrams throughout this README · docs/project-cascade-roadmap.md</text>
+</svg>

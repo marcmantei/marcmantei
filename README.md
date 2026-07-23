@@ -1,8 +1,8 @@
-# Marc Mantei — AI Engineer
+# Marc Mantei — Senior AI Engineer
 
-I build AI automation pipelines, agentic systems, and the orchestration infrastructure that makes them work in production.
+I build self-regulating AI systems: closed control loops that plan, implement, review, and ship software — with the human as approver, not operator.
 
-10+ years of software engineering, from large-scale data processing pipelines at Netflix (Eyeline Studios) to designing multi-agent architectures and self-hosted AI orchestration stacks. I build the systems that let small teams ship like large ones.
+10+ years of production infrastructure behind it, from terabyte-scale data pipelines at Netflix (Eyeline Studios) to autonomous multi-agent platforms. My thesis: AI work is only trustworthy inside a feedback loop with a measured signal, an actuator, a setpoint, and a proof.
 
 > Built automation infrastructure for [Eyeline Studios'](https://eyelinestudios.com/en/studios/stages) production pipelines at Netflix, processing terabytes across 100+ concurrent data sources with async orchestration and distributed queues.
 
@@ -13,17 +13,61 @@ I build AI automation pipelines, agentic systems, and the orchestration infrastr
 
 ---
 
+### Shipyard — Self-Managing AI Platform
+
+A self-hosted platform where AI owns the software lifecycle end to end: issue triage → PRD → implementation → independent review → merge → report. ~450 PRs shipped in its first 9 weeks — 77 commits authored by the platform's own bots.
+
+![Shipyard: an approved plan cascades into shipped software](assets/hero-cascade.svg)
+
+The architecture separates deterministic orchestration (Apache Airflow: routing, RBAC, retries) from reasoning (a Rust agent runtime on Claude Opus). Around that core runs a fleet of **~20 closed control loops**, each with a measured signal, an actuator, a setpoint — and a proof. Ten complete loop scenarios (convergence, oscillation, plateau, crash-resume) are replayed as regression tests.
+
+- **Review ↔ fix loop** — findings → adversarial verification → weighted error → fix worker → re-review. Converged bot PRs auto-merge behind hard gates; plateau or oscillation escalates to a human
+- **LLM-as-judge quality gates** — every deliverable scored against a rubric before it ships; dual-judge divergence fails toward a human
+- **Self-healing** — watchdogs detect worker timeouts, orphaned dispatches, and lost webhooks, classify the root cause, and remediate. Proven end to end: a recurring timeout auto-filed its own architecture issue, which became the fix PR the healer now carries
+- **Hill-climbing engine** — every 6 hours, production traces are clustered into failure patterns and filed as improvement issues. The system proposes; it never self-modifies
+- **Confidence calibration** — weekly Brier-score checks verify that a self-reported 0.8 actually means ~80% correct
+
+| Self-healing loop | Evaluation loop |
+| --- | --- |
+| ![Self-healing flow](assets/self-healing-flow.svg) | ![Evaluation loop flow](assets/eval-loop-flow.svg) |
+
+Guardrails are structural: the worker that builds a PR never reviews it, no agent merges its own work, every event passes an RBAC gauntlet, and every LLM call is traced with per-generation cost (Langfuse + Prometheus/Grafana). 20+ containers on my own hardware — zero infrastructure cost.
+
+**Scale:** ~66k LOC · 40 Airflow DAGs · 109 test files · 20+ containers
+**Stack:** Python · Apache Airflow · Rust agent runtime · Claude Opus/Haiku · Langfuse · Prometheus · Loki · Grafana · PostgreSQL · Docker
+
+---
+
+### Myceliums — Code Knowledge Graph
+
+A ~57,000-line Rust engine that parses codebases into a queryable knowledge graph, so AI agents understand architecture before they write a single line. Published on [crates.io](https://crates.io/crates/myc), Homebrew, and Docker. Fully local — no cloud, no telemetry.
+
+![Myceliums code graph of the Express.js codebase](assets/myceliums-express-graph.svg)
+
+Benchmarked against six real open-source repos (Django, FastAPI, Tokio, Express, Zod, Gin): **~99.8% token reduction** and ~94% fewer tool calls versus file-reading agents, with cached lookups around 50 ms.
+
+- 7-crate Rust workspace: core, storage, MCP server, Cypher engine, HTTP server, benchmarks, CLI
+- Parses 23 languages via tree-sitter
+- Hybrid search: BM25 + local ONNX embeddings fused via Reciprocal Rank Fusion, optional cross-encoder reranking, LanceDB vector store with automatic IVF-PQ indexing
+- Impact analysis: parses the git diff, then walks the call graph to map a change's blast radius
+- Graph intelligence: Leiden community detection, centrality, cycle detection, architecture linting and drift detection
+- 12 MCP tools with one-command setup for 12 editor platforms
+
+**Stack:** Rust · tree-sitter · LanceDB · fastembed · MCP · Cypher
+
+---
+
 ### What I work with
 
-![Rust](https://img.shields.io/badge/-Rust-555?style=flat-square&logo=rust&logoColor=fff)
 ![Python](https://img.shields.io/badge/-Python-555?style=flat-square&logo=python&logoColor=fff)
+![Rust](https://img.shields.io/badge/-Rust-555?style=flat-square&logo=rust&logoColor=fff)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-555?style=flat-square&logo=typescript&logoColor=fff)
-![Docker](https://img.shields.io/badge/-Docker-555?style=flat-square&logo=docker&logoColor=fff)
 ![Apache Airflow](https://img.shields.io/badge/-Airflow-555?style=flat-square&logo=apacheairflow&logoColor=fff)
-![Qdrant](https://img.shields.io/badge/-Qdrant-555?style=flat-square&logo=qdrant&logoColor=fff)
+![Claude](https://img.shields.io/badge/-Claude-555?style=flat-square&logo=anthropic&logoColor=fff)
+![Docker](https://img.shields.io/badge/-Docker-555?style=flat-square&logo=docker&logoColor=fff)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-555?style=flat-square&logo=postgresql&logoColor=fff)
 ![Prometheus](https://img.shields.io/badge/-Prometheus-555?style=flat-square&logo=prometheus&logoColor=fff)
 ![Grafana](https://img.shields.io/badge/-Grafana-555?style=flat-square&logo=grafana&logoColor=fff)
-![Cloudflare](https://img.shields.io/badge/-Cloudflare-555?style=flat-square&logo=cloudflare&logoColor=fff)
 ![Linux](https://img.shields.io/badge/-Linux-555?style=flat-square&logo=linux&logoColor=fff)
 ![Git](https://img.shields.io/badge/-Git-555?style=flat-square&logo=git&logoColor=fff)
 
@@ -44,59 +88,3 @@ I build AI automation pipelines, agentic systems, and the orchestration infrastr
   <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-light&hide_border=true&area=true&v=2" />
   <img alt="Contribution Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-light&hide_border=true&area=true&v=2" width="100%" />
 </picture>
-
----
-
-### Current focus
-
-- **AI infrastructure:** self-hosted orchestration stacks with Airflow, Qdrant, and full observability pipelines
-- **Multi-agent orchestration:** autonomous AI agents with LLM routing, persistent memory, and webhook-driven automation
-- **Code intelligence:** giving AI agents structural understanding of codebases via knowledge graphs and hybrid search
-
----
-
-### Agent Orchestration
-
-I built and operate a multi-agent AI system that functions as an autonomous software team. I create GitHub issues, and the system handles PRD writing, implementation, CI fixes, and review responses end to end without intervention.
-
-The system uses 3-tier LLM routing: a dispatcher (Claude Opus) analyzes each request, selects relevant skills, and spawns workers (Claude Haiku) for parallel execution. A GitHub App with org-wide webhook delivery via Cloudflare Tunnel and cryptographic signature verification enables automated CI failure response, PR review handling, and issue triage.
-
-- Agent presets and custom automation skills for domain-specific AI workflows
-- Worker isolation in git worktrees for parallel autonomous development across multiple repositories
-- Persistent memory systems and state tracking across agent sessions
-- Full PR lifecycle management: CI failure to auto-fix, review feedback to auto-revision
-- Prompt iteration and output validation via Langfuse for continuous agent quality improvement
-- 7,300+ automated task commits since January 2025
-
-**Stack:** Rust · Python · GitHub App (multi-repo) · Cloudflare Tunnel
-
----
-
-### AI Orchestration Infrastructure
-
-Production infrastructure for AI workflow automation, running 12+ Docker services with resource-budgeted orchestration.
-
-- Apache Airflow (Scheduler + CeleryExecutor) for DAG-based AI task scheduling, triggering agent workflows via REST API
-- Qdrant vector database with GPU acceleration (CUDA) for embedding workloads and semantic search
-- Full observability pipeline: OpenTelemetry Collector, Prometheus, Loki, Grafana dashboards
-- RBAC per data domain for AI agent access control and GDPR sanitization on PII-bearing results
-- PostgreSQL + Redis data layer; Traefik reverse proxy with automated TLS
-- Tailscale mesh VPN for secure remote access, zero public ports for admin interfaces
-
-**Stack:** Docker Compose · Apache Airflow · Qdrant · PostgreSQL · Redis · Prometheus · Loki · Grafana · OpenTelemetry · Traefik · Tailscale
-
----
-
-### Myceliums: Code Knowledge Graph
-
-A code intelligence engine in Rust that parses source code into a queryable knowledge graph, so AI agents understand architecture before they write a single line. Published on [crates.io](https://crates.io/crates/myc).
-
-Instead of letting agents grep through files and guess at structure, Myceliums gives them a structured graph of symbols, call chains, functional modules, and execution flows, all queryable through MCP, a CLI, or a custom Cypher dialect. One search call instead of fifty.
-
-- 6-crate Rust workspace covering core, storage, MCP server, Cypher engine, HTTP server, and CLI
-- Parses 23 languages via tree-sitter with two-pass symbol resolution
-- Hybrid search: BM25 + vector embeddings (all-MiniLM-L6-v2 via fastembed) + Reciprocal Rank Fusion, with optional cross-encoder reranking (BAAI/bge-reranker-base) and IVF-PQ indexing for large repositories
-- Impact analysis: parses git diffs, then BFS through the call graph to find blast radius
-- 12 MCP tools with one-command setup for 12 platforms
-
-**Stack:** Rust · tree-sitter · LanceDB · fastembed · Cypher

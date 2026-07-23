@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="system-ui, -apple-system, sans-serif">
+<!-- DO NOT regenerate from .mmd — this SVG is hand-styled. Edit the .mmd for structure, then update this SVG manually. -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#020617"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6366f1"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f97316"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowTeal" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2dd4bf"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="900" fill="url(#bgGrad)" rx="12"/>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" fill="#f1f5f9" font-size="22" font-weight="bold">Shipyard — Self-Healing Loop</text>
+  <text x="600" y="62" text-anchor="middle" fill="#94a3b8" font-size="13">detect → diagnose → heal → verify → escalate — incidents become issues, and issues become fixes</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- LAYER 1: DETECTORS -->
+  <!-- ═══════════════════════════════════════ -->
+  <rect x="30" y="85" width="1140" height="95" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5" opacity="0.9"/>
+  <text x="50" y="105" fill="#a5b4fc" font-size="11" font-weight="bold" letter-spacing="2">1 — DETECTORS · FOUR INDEPENDENT SIGNALS</text>
+
+  <rect x="50" y="118" width="260" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="180" y="135" text-anchor="middle" fill="#e0e7ff" font-size="11" font-weight="bold">watchdog · every 5 min</text>
+  <text x="180" y="149" text-anchor="middle" fill="#a5b4fc" font-size="9">HTTP/TCP service probes over Docker network</text>
+  <text x="180" y="161" text-anchor="middle" fill="#a5b4fc" font-size="9">OAuth token expiry · webhook bridge health</text>
+
+  <rect x="330" y="118" width="260" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="460" y="135" text-anchor="middle" fill="#e0e7ff" font-size="11" font-weight="bold">docker-events-bridge · systemd</text>
+  <text x="460" y="149" text-anchor="middle" fill="#a5b4fc" font-size="9">container die / oom / unhealthy events</text>
+  <text x="460" y="161" text-anchor="middle" fill="#a5b4fc" font-size="9">pushed to SpaceBot portal in real time</text>
+
+  <rect x="610" y="118" width="270" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="745" y="135" text-anchor="middle" fill="#e0e7ff" font-size="11" font-weight="bold">worker_timeout_healer · every 10 min</text>
+  <text x="745" y="149" text-anchor="middle" fill="#a5b4fc" font-size="9">Loki log analysis: timeouts, SQLite contention,</text>
+  <text x="745" y="161" text-anchor="middle" fill="#a5b4fc" font-size="9">stuck workers, API errors, memory pressure</text>
+
+  <rect x="900" y="118" width="250" height="50" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="1025" y="135" text-anchor="middle" fill="#e0e7ff" font-size="11" font-weight="bold">deploy_drift_monitor · hourly</text>
+  <text x="1025" y="149" text-anchor="middle" fill="#a5b4fc" font-size="9">live tree vs deploy manifest —</text>
+  <text x="1025" y="161" text-anchor="middle" fill="#a5b4fc" font-size="9">uncommitted hotfixes surfaced</text>
+
+  <!-- L1 → L2 -->
+  <line x1="180" y1="168" x2="330" y2="235" stroke="#6366f1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="460" y1="168" x2="450" y2="233" stroke="#6366f1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="745" y1="168" x2="855" y2="233" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+  <line x1="1025" y1="168" x2="620" y2="231" stroke="#6366f1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="935" y="200" text-anchor="middle" fill="#fdba74" font-size="9">heals directly</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- LAYER 2: REMEDIATION -->
+  <!-- ═══════════════════════════════════════ -->
+  <rect x="30" y="205" width="1140" height="135" rx="8" fill="#2e1065" stroke="#a78bfa" stroke-width="1.5" opacity="0.9"/>
+  <text x="50" y="225" fill="#d8b4fe" font-size="11" font-weight="bold" letter-spacing="2">2 — REMEDIATION · TWO ARMS</text>
+
+  <rect x="60" y="240" width="620" height="88" rx="6" fill="#4c1d95" stroke="#c084fc" stroke-width="1.5"/>
+  <text x="370" y="259" text-anchor="middle" fill="#ede9fe" font-size="12" font-weight="bold">SpaceBot — sre-monitoring skill</text>
+  <text x="370" y="276" text-anchor="middle" fill="#d8b4fe" font-size="9">DIAGNOSE: container logs via Docker API · Airflow REST for failed DAG runs · resource usage</text>
+  <text x="370" y="291" text-anchor="middle" fill="#d8b4fe" font-size="9">FIX: restart crashed services via Docker API · clear caches · re-run failed tasks</text>
+  <text x="370" y="306" text-anchor="middle" fill="#d8b4fe" font-size="9">VERIFY: probe again, confirm healthy · remember the incident in vector memory</text>
+  <text x="370" y="321" text-anchor="middle" fill="#d8b4fe" font-size="9">protocol: detect → diagnose → fix → verify → escalate</text>
+
+  <rect x="710" y="240" width="440" height="88" rx="6" fill="#4c1d95" stroke="#c084fc" stroke-width="1"/>
+  <text x="930" y="259" text-anchor="middle" fill="#ede9fe" font-size="12" font-weight="bold">Healer DAG — hardwired remediation</text>
+  <text x="930" y="276" text-anchor="middle" fill="#d8b4fe" font-size="9">SQLite contention → enable WAL (persistent) + checkpoint</text>
+  <text x="930" y="291" text-anchor="middle" fill="#d8b4fe" font-size="9">stuck workers → cancel via SpaceBot API · approaching timeout → report</text>
+  <text x="930" y="306" text-anchor="middle" fill="#d8b4fe" font-size="9">slow queries → VACUUM ANALYZE · ClickHouse cache flush</text>
+  <text x="930" y="321" text-anchor="middle" fill="#d8b4fe" font-size="9">no LLM in the loop — deterministic, threshold + cooldown gated</text>
+
+  <!-- L2 → L3 -->
+  <line x1="370" y1="328" x2="370" y2="380" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#arrowTeal)"/>
+  <line x1="930" y1="328" x2="800" y2="382" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#arrowTeal)"/>
+  <text x="600" y="362" text-anchor="middle" fill="#5eead4" font-size="9">every action reported — healed or not</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- LAYER 3: REPORT + REMEMBER -->
+  <!-- ═══════════════════════════════════════ -->
+  <rect x="30" y="380" width="1140" height="85" rx="8" fill="#134e4a" stroke="#2dd4bf" stroke-width="1.5" opacity="0.9"/>
+  <text x="50" y="400" fill="#5eead4" font-size="11" font-weight="bold" letter-spacing="2">3 — REPORT &amp; REMEMBER</text>
+
+  <rect x="120" y="412" width="380" height="42" rx="6" fill="#115e59" stroke="#2dd4bf" stroke-width="1"/>
+  <text x="310" y="429" text-anchor="middle" fill="#ccfbf1" font-size="11" font-weight="bold">Telegram — you always know</text>
+  <text x="310" y="445" text-anchor="middle" fill="#5eead4" font-size="9">"clickhouse OOM-killed at 03:12, restarted, healthy again — memory limit likely too low"</text>
+
+  <rect x="560" y="412" width="380" height="42" rx="6" fill="#115e59" stroke="#2dd4bf" stroke-width="1"/>
+  <text x="750" y="429" text-anchor="middle" fill="#ccfbf1" font-size="11" font-weight="bold">Vector memory + cortex observation</text>
+  <text x="750" y="445" text-anchor="middle" fill="#5eead4" font-size="9">incident history feeds the daily report and the next diagnosis</text>
+
+  <!-- L3 → L4 -->
+  <line x1="530" y1="465" x2="530" y2="515" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+  <text x="680" y="495" text-anchor="middle" fill="#fca5a5" font-size="9">recurring (3+ alerts / 24h) or significant incident</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- LAYER 4: ESCALATION -->
+  <!-- ═══════════════════════════════════════ -->
+  <rect x="30" y="515" width="1140" height="95" rx="8" fill="#2a0a0a" stroke="#ef4444" stroke-width="1.5" opacity="0.9"/>
+  <text x="50" y="535" fill="#fca5a5" font-size="11" font-weight="bold" letter-spacing="2">4 — ESCALATION · WHEN HEALING ISN'T ENOUGH</text>
+
+  <rect x="120" y="550" width="420" height="50" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
+  <text x="330" y="567" text-anchor="middle" fill="#fecaca" font-size="11" font-weight="bold">proactive_issue_flow</text>
+  <text x="330" y="581" text-anchor="middle" fill="#fca5a5" font-size="9">3+ alerts for the same service in 24h → GitHub issue with</text>
+  <text x="330" y="593" text-anchor="middle" fill="#fca5a5" font-size="9">timeline, root cause analysis, prevention recommendations</text>
+
+  <rect x="580" y="550" width="420" height="50" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
+  <text x="790" y="567" text-anchor="middle" fill="#fecaca" font-size="11" font-weight="bold">incident_postmortem_flow</text>
+  <text x="790" y="581" text-anchor="middle" fill="#fca5a5" font-size="9">after a significant incident (crash + recovery, outage):</text>
+  <text x="790" y="593" text-anchor="middle" fill="#fca5a5" font-size="9">structured postmortem — timeline, root cause, action items</text>
+
+  <!-- L4 → L5 -->
+  <line x1="330" y1="600" x2="330" y2="655" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+  <line x1="790" y1="600" x2="690" y2="657" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- LAYER 5: THE LOOP CLOSES -->
+  <!-- ═══════════════════════════════════════ -->
+  <rect x="30" y="655" width="1140" height="95" rx="8" fill="#14532d" stroke="#4ade80" stroke-width="1.5" opacity="0.9"/>
+  <text x="50" y="675" fill="#86efac" font-size="11" font-weight="bold" letter-spacing="2">5 — THE LOOP CLOSES · THE ISSUE ENTERS THE GOLDEN PATH</text>
+
+  <rect x="120" y="690" width="880" height="50" rx="6" fill="#166534" stroke="#4ade80" stroke-width="1.5" filter="url(#glow)"/>
+  <text x="560" y="708" text-anchor="middle" fill="#dcfce7" font-size="11" font-weight="bold">GitHub issue → PRD → your approval → SpaceBot implements → AI review → merged fix</text>
+  <text x="560" y="724" text-anchor="middle" fill="#86efac" font-size="9">the same pipeline as any feature request (see Issue → Production diagram) — with the same human gates</text>
+
+  <!-- closing loop arrow back to detectors -->
+  <path d="M 1000 705 C 1160 690, 1175 260, 1150 175" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="7,5" marker-end="url(#arrowGreen)"/>
+  <text x="1168" y="445" text-anchor="middle" fill="#86efac" font-size="9" transform="rotate(-90 1168 445)">fix deployed → detectors verify it holds</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- LEGEND -->
+  <!-- ═══════════════════════════════════════ -->
+  <rect x="30" y="775" width="1140" height="105" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1" opacity="0.9"/>
+  <text x="50" y="798" fill="#94a3b8" font-size="11" font-weight="bold" letter-spacing="2">LEGEND</text>
+
+  <line x1="50" y1="820" x2="80" y2="820" stroke="#6366f1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="90" y="824" fill="#cbd5e1" font-size="10">detection signal</text>
+
+  <line x1="240" y1="820" x2="270" y2="820" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrowOrange)"/>
+  <text x="280" y="824" fill="#cbd5e1" font-size="10">direct hardwired healing</text>
+
+  <line x1="480" y1="820" x2="510" y2="820" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#arrowTeal)"/>
+  <text x="520" y="824" fill="#cbd5e1" font-size="10">reporting</text>
+
+  <line x1="640" y1="820" x2="670" y2="820" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+  <text x="680" y="824" fill="#cbd5e1" font-size="10">escalation</text>
+
+  <line x1="790" y1="820" x2="820" y2="820" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="7,5" marker-end="url(#arrowGreen)"/>
+  <text x="830" y="824" fill="#cbd5e1" font-size="10">loop closes — fix ships through the golden path</text>
+
+  <text x="50" y="852" fill="#64748b" font-size="10">Real example: recurring worker timeouts → architecture-review issue #19 (timeline + root cause) → fix PR #20 (WAL healing, stuck-worker cancellation) → reviewed, deployed,</text>
+  <text x="50" y="868" fill="#64748b" font-size="10">and the worker_timeout_healer that detected the problem now carries the remediation for it. The system filed, fixed, and now guards against its own bug.</text>
+</svg>
