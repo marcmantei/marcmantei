@@ -17,7 +17,9 @@ I build self-regulating AI systems: closed control loops that plan, implement, r
 
 A self-hosted platform where AI owns the software lifecycle end to end: issue triage → PRD → implementation → independent review → merge → report. ~450 PRs shipped in its first 9 weeks — 77 commits authored by the platform's own bots.
 
-![Shipyard: an approved plan cascades into shipped software](assets/hero-cascade.svg)
+![Shipyard Mission Control, live: a 7-wave epic shipped end to end by autonomous workers](assets/mission-control.webp)
+
+*Mission Control, live: a 7-wave epic shipped end to end by autonomous workers — every issue with its PR, token count, and cost.*
 
 The architecture separates deterministic orchestration (Apache Airflow: routing, RBAC, retries) from reasoning (a Rust agent runtime on Claude Opus). Around that core runs a fleet of **~20 closed control loops**, each with a measured signal, an actuator, a setpoint — and a proof. Ten complete loop scenarios (convergence, oscillation, plateau, crash-resume) are replayed as regression tests.
 
@@ -27,9 +29,9 @@ The architecture separates deterministic orchestration (Apache Airflow: routing,
 - **Hill-climbing engine** — every 6 hours, production traces are clustered into failure patterns and filed as improvement issues. The system proposes; it never self-modifies
 - **Confidence calibration** — weekly Brier-score checks verify that a self-reported 0.8 actually means ~80% correct
 
-| Self-healing loop | Evaluation loop |
-| --- | --- |
-| ![Self-healing flow](assets/self-healing-flow.svg) | ![Evaluation loop flow](assets/eval-loop-flow.svg) |
+![Per-step cost breakdown: PRD rounds, build, review — each with tokens, calls, and dollar cost](assets/mission-control-cost.webp)
+
+*Full cost transparency: where $17.73 went, step by step — PRD rounds, builds, reviews, each with tokens and dollar cost.*
 
 Guardrails are structural: the worker that builds a PR never reviews it, no agent merges its own work, every event passes an RBAC gauntlet, and every LLM call is traced with per-generation cost (Langfuse + Prometheus/Grafana). 20+ containers on my own hardware — zero infrastructure cost.
 
