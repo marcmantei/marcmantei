@@ -42,7 +42,7 @@ Guardrails are structural: the worker that builds a PR never reviews it, no agen
 
 A ~57,000-line Rust engine that parses codebases into a queryable knowledge graph, so AI agents understand architecture before they write a single line. Published on [crates.io](https://crates.io/crates/myc), Homebrew, and Docker. Fully local — no cloud, no telemetry.
 
-![Myceliums code graph of the Express.js codebase](assets/myceliums-express-graph.svg)
+![Myceliums — code intelligence infrastructure for AI agents](assets/myceliums-banner.png)
 
 Benchmarked against six real open-source repos (Django, FastAPI, Tokio, Express, Zod, Gin): **~99.8% token reduction** and ~94% fewer tool calls versus file-reading agents, with cached lookups around 50 ms.
 
