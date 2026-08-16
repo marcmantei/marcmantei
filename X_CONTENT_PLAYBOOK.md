@@ -64,7 +64,7 @@ Hashtags wie `#buildinpublic` und `#indiedev` bringen bei diesem Followerstand n
 
 ## 4. Konkrete Entwürfe aus echten Zahlen
 
-Alle Zahlen unten sind gegen `Bewerbung-CV/master/portfolio_facts_2026-07.md` und das Profil-README geprüft. Längen liegen zwischen 173 und 353 Zeichen; der Account hat Premium, im Compose-Feld wurden 600 Zeichen ohne Sperre des Post-Buttons akzeptiert, Entwurf A und B passen also trotz über 280 Zeichen.
+Alle Zahlen unten sind gegen `Bewerbung-CV/master/portfolio_facts_2026-07.md` und das Profil-README geprüft. Entwurf A wurde am 16.08.2026 im echten X-Compose-Feld aufgebaut: 358 Zeichen, Zeilenumbrüche halten in der Vorschau, Zähler nicht am Limit, "Posten" bleibt aktiv. Nicht abgeschickt. Längen der vier Entwürfe: 353, 293, 257, 173 Zeichen; der Account hat Premium, im Compose-Feld wurden 600 Zeichen ohne Sperre akzeptiert, A und B passen also trotz über 280 Zeichen.
 
 **A. Myceliums, Aufhänger Benchmark**
 
@@ -105,6 +105,7 @@ Alle Zahlen unten sind gegen `Bewerbung-CV/master/portfolio_facts_2026-07.md` un
 Verifiziert am 16.08.2026 über eine ausgeloggte Browser-Session, also so, wie Fremde das Profil sehen. Bio, Standort, Website und Handle stehen dort in derselben Struktur wie beim Referenzprofil; das Geburtsdatum ist für Fremde nicht sichtbar.
 
 - **Anzeigename** steht auf "Marc", soll "Marc Mantei" werden. X sperrt das Feld, solange nach dem Handle-Wechsel die Profilprüfung läuft. Um 09:03 UTC erneut geprüft, Badge weiter aktiv.
+- **Bio-Link zeigt auf `http://github.com/marcmantei`**, das Referenzprofil auf `https://`. Beide Ziele antworten mit 200, der http-Link leitet per 301 auf https weiter, also nur Kosmetik. Beim nächsten Bio-Edit `https://` voranstellen. Der Editor war ab 09:52 UTC nicht mehr ladbar (Modal bleibt leer, vermutlich Drosselung nach mehreren Profil-Updates), deshalb offen.
 - **Avatar** ist ein KI-Bild. Das Referenzprofil nutzt ein echtes Portrait, und bei einem Account, der über Handwerk Vertrauen aufbaut, arbeitet ein generiertes Bild dagegen. Auf Wunsch von Marc vorerst unverändert.
 - **Gepinnter Post** fehlt. Sobald einer der Entwürfe oben läuft, gehört der beste ans Profil gepinnt.
 - **Wirkungstest offen.** Ob die Regeln greifen, zeigt sich erst an den Likes des ersten Posts nach neuem Muster. Bis dahin ist das hier eine begründete Hypothese, kein Beweis.
