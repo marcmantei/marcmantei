@@ -24,6 +24,8 @@ Vier Muster, die das tragen:
 
 Dazu kommt: Der Account ist nicht rein technisch. MMA und Nostalgie-Fragen bringen dort das mit Abstand größte Engagement und machen ihn als Person greifbar.
 
+Nachgezählt über `from:tornikegomareli min_faves:100`: **0 von 8** Top-Posts enthalten einen Hashtag.
+
 ## 2. Wo Marcs bisheriger Content abweicht
 
 Erhoben über `from:evermeld`, letzte Posts vor der Umstellung. Alle mit **0 Likes**:
@@ -35,13 +37,20 @@ Erhoben über `from:evermeld`, letzte Posts vor der Umstellung. Alle mit **0 Lik
 | "Menu bar apps have an onboarding problem … Small thing." | Verkleinert die eigene Arbeit im letzten Satz. |
 | "ChargePilot is entering beta. Want in? #buildinpublic #indiedev" | Ankündigung einer Ankündigung, ohne zeigbares Ergebnis. |
 
-Die drei konkreten Unterschiede:
+Die drei konkreten Unterschiede, ausgezählt über die letzten 7 eigenen Posts:
 
-- **Keine Zahlen.** Marcs stärkste Assets sind messbar (99,8 % Token-Reduktion, 10,1 % Orchestrierungs-Overhead, ~450 PRs in 9 Wochen), aber die Posts handeln von Nachtschichten.
+| Merkmal | Marc | Referenz (Top-8) |
+|---|---|---|
+| Posts mit 0 Likes | 7 von 7 | 0 von 8 |
+| Posts mit einer Zahl samt Einheit | 0 von 7 | 5 von 8 |
+| Posts mit Hashtags | 3 von 7 | 0 von 8 |
+| Selbstverkleinerung ("small thing", "nobody would've noticed") | 2 von 7 | 0 von 8 |
+
+- **Keine Zahlen.** Marcs stärkste Assets sind messbar (99,8 % Token-Reduktion, ~10 % Orchestrierungs-Overhead, ~450 PRs in 9 Wochen), aber die Posts handeln von Nachtschichten.
 - **Selbstverkleinerung.** "Small thing", "nobody would've noticed" nimmt dem Post die Berechtigung, gelesen zu werden.
 - **Falsches Projekt im Schaufenster.** Gepostet wird ChargePilot (Batterieanzeige). Die Arbeit mit echtem Neuigkeitswert ist Myceliums und Shipyard, und dazu passt auch die neue Bio.
 
-Hashtags wie `#buildinpublic` und `#indiedev` bringen bei diesem Followerstand nichts. Das Referenzprofil nutzt in seinen Top-Posts keinen einzigen.
+Hashtags wie `#buildinpublic` und `#indiedev` bringen bei diesem Followerstand nichts, siehe Auszählung oben.
 
 ## 3. Regeln für die nächsten Posts
 
@@ -54,6 +63,8 @@ Hashtags wie `#buildinpublic` und `#indiedev` bringen bei diesem Followerstand n
 7. Threads nur, wenn Post 1 allein schon standhält.
 
 ## 4. Konkrete Entwürfe aus echten Zahlen
+
+Alle Zahlen unten sind gegen `Bewerbung-CV/master/portfolio_facts_2026-07.md` und das Profil-README geprüft. Längen liegen zwischen 173 und 353 Zeichen; der Account hat Premium, im Compose-Feld wurden 600 Zeichen ohne Sperre des Post-Buttons akzeptiert, Entwurf A und B passen also trotz über 280 Zeichen.
 
 **A. Myceliums, Aufhänger Benchmark**
 
@@ -71,7 +82,7 @@ Hashtags wie `#buildinpublic` und `#indiedev` bringen bei diesem Followerstand n
 
 > Everyone guesses what AI orchestration costs on top of the actual work. I measured it.
 >
-> 10.1% of total spend, tracked per generation in Grafana.
+> ~10% of total spend, tracked per generation in Grafana.
 >
 > That is the overhead for routing, RBAC, retries and review across ~450 PRs in 9 weeks. 77 of those commits were authored by the platform's own bots.
 
@@ -91,6 +102,9 @@ Hashtags wie `#buildinpublic` und `#indiedev` bringen bei diesem Followerstand n
 
 ## 5. Was am Profil noch offen ist
 
-- **Anzeigename** steht auf "Marc", soll "Marc Mantei" werden. X sperrt das Feld, solange nach dem Handle-Wechsel die Profilprüfung läuft.
+Verifiziert am 16.08.2026 über eine ausgeloggte Browser-Session, also so, wie Fremde das Profil sehen. Bio, Standort, Website und Handle stehen dort in derselben Struktur wie beim Referenzprofil; das Geburtsdatum ist für Fremde nicht sichtbar.
+
+- **Anzeigename** steht auf "Marc", soll "Marc Mantei" werden. X sperrt das Feld, solange nach dem Handle-Wechsel die Profilprüfung läuft. Um 09:03 UTC erneut geprüft, Badge weiter aktiv.
 - **Avatar** ist ein KI-Bild. Das Referenzprofil nutzt ein echtes Portrait, und bei einem Account, der über Handwerk Vertrauen aufbaut, arbeitet ein generiertes Bild dagegen. Auf Wunsch von Marc vorerst unverändert.
 - **Gepinnter Post** fehlt. Sobald einer der Entwürfe oben läuft, gehört der beste ans Profil gepinnt.
+- **Wirkungstest offen.** Ob die Regeln greifen, zeigt sich erst an den Likes des ersten Posts nach neuem Muster. Bis dahin ist das hier eine begründete Hypothese, kein Beweis.
