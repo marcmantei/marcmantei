@@ -26,9 +26,9 @@ More than ten years of workflow automation, from Netflix's virtual production st
 
 AI agents write code fast, but unattended output is hard to trust. Shipyard turns an approved plan into merged software: independent AI workers build, review and fix each issue, wave by wave. Every automated decision runs inside a closed control loop with a measured signal, a hard cap and an escalation path to a human. In production since May 2026.
 
-![Shipyard Mission Control: the fleet in one sentence, and only what needs a person on top](assets/shipyard-mission-control.webp)
+![Shipyard Mission Control overview: "1 thing needs you", with 14-day charts for CI minutes, commits and API-equivalent value](assets/shipyard-overview.webp)
 
-*Mission Control, live: the fleet in one sentence, and only what needs a person on top.*
+*Mission Control, live: the fleet in one sentence, only what needs a person on top, and 14 days of CI minutes, commits and API-equivalent value.*
 
 Shipyard opened **267 pull requests** on its own across 10 repositories. **240 were merged**: 75 by its own merge gates, 165 by me. About 90% of the commits in my repositories over the last six months were written by it. Over 1 billion tokens metered, 276 PRs through its AI reviewer (as of 24 Sep 2026).
 
@@ -37,9 +37,16 @@ Shipyard opened **267 pull requests** on its own across 10 repositories. **240 w
 - **81 escalations since July**: when the error stops falling or the round budget runs out, it stops and asks. It raised 78 of them itself
 - **1 plan → 7 merged PRs**: a terrain generator went from one approval to seven merged pull requests for €16.23 of model time at list price
 
-![A loop's flight recorder: error, judge and confidence per round, and which of six rules stopped it](assets/shipyard-flight-recorder.webp)
+![A loop's flight recorder for shipyard#636: error 2 to 0.5, judge 0.70 to 0.76, confidence 0.18 to 0.49, and the plateau rule that stopped it](assets/shipyard-flight-recorder.webp)
 
-*A loop's flight recorder: error, judge and confidence per round, and which of six rules stopped it.*
+*A loop's flight recorder: error fell 75% over three rounds while confidence rose, and it names which of six rules stopped it.*
+
+<p>
+  <img src="assets/shipyard-decision-brief.webp" alt="Decision brief for shipyard#638: the fix loop stopped on budget and waits for a call, with its evidence and trajectory" width="49%" />
+  <img src="assets/shipyard-grading.webp" alt="Finished projects: grade distribution A 16, B 11, C 5, D 1, and where weak cases lose by control-loop component" width="49%" />
+</p>
+
+*Left: every waiting item opens as a decision, with the situation in one sentence and the evidence behind it. Right: every finished case is graded A to D, and weak cases are traced to the control-loop component that lost them.*
 
 Six loop families, nested by timescale, so every ring can stop what runs inside it: the eval loop on every AI output, the build loop per issue, the cascade every ten minutes, the hill-climbing engine every six hours. The review budget is earned by the size of the problem (3 to 8 rounds), and loop state lives on the PR itself, so it survives restarts. Guardrails are structural: the worker that builds a PR never reviews it, and no agent merges its own work.
 
