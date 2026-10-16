@@ -9,7 +9,7 @@ More than ten years of workflow automation, from Netflix's virtual production st
 > At [Eyeline Studios](https://eyelinestudios.com/en/studios/stages) (Netflix) I built key production tools for the virtual production stages (LED volumes, volumetric capture, the Light Dome) and automated terabyte-scale data workflows across 100+ sources, with C++/Python API bridges and global CI/CD.
 
 [![Website](https://img.shields.io/badge/marcmantei.com-0B0B0A?style=flat&logo=safari&logoColor=white)](https://www.marcmantei.com)
-[![Intro call](https://img.shields.io/badge/Request_an_intro_call-FF623B?style=flat&logo=googlecalendar&logoColor=white)](https://cal.marcmantei.com/marc/intro-meeting)
+[![Intro call](https://img.shields.io/badge/Request_an_intro_call-4A9B6E?style=flat&logo=googlecalendar&logoColor=white)](https://cal.marcmantei.com/marc/intro-meeting)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcmantei/)
 [![Email](https://img.shields.io/badge/mail@marcmantei.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:mail@marcmantei.com)
 [![IMDb](https://img.shields.io/badge/IMDb-F5C518?style=flat&logo=imdb&logoColor=000)](https://www.imdb.com/name/nm15608082/)
@@ -57,15 +57,22 @@ Any model can write a plausible support email. The hard part is knowing when one
 
 **7** hard gates before any auto-send · **4** possible outcomes per draft · **1,798** backend tests on SQLite and Postgres · **1,061** commits in 29 days, merges not counted
 
-[meetsupportpilot.com](https://meetsupportpilot.com)
-
 ---
 
 ### Myceliums · A code knowledge graph for AI agents
 
 Coding agents answer structural questions by grepping and reading whole files, which burns context and still misses indirect callers. Myceliums is a local Rust engine that parses a repository into a graph of symbols, calls, communities and execution flows, and serves it over MCP. One tool call returns callers, blast radius or a Cypher result as compact text. Open source (Apache-2.0), v0.3.2, fully local: no cloud, no telemetry.
 
-![Myceliums: code intelligence infrastructure for AI agents](assets/myceliums-banner.png)
+![Gin's call graph as built by Myceliums: 1,261 connected symbols, colored by package](assets/myceliums-call-graph.webp)
+
+*Gin's call graph as built by Myceliums: 1,261 connected symbols, colored by package.*
+
+<p>
+  <img src="assets/myceliums-cli.webp" alt="myc analyze indexes Gin in 390 ms of parsing, then a Cypher query lists every caller of ClientIP" width="49%" />
+  <img src="assets/myceliums-mcp.webp" alt="One MCP call on a one-line change returns callers and callees in about 243 tokens" width="49%" />
+</p>
+
+*Left: `myc analyze` indexes Gin in 390 ms of parsing, then a Cypher query lists every caller of `ClientIP`. Right: one MCP call on a one-line change returns its callers and callees in about 243 tokens.*
 
 Benchmarked on six open-source repos (Django, FastAPI, Tokio, Express, Zod, Gin): **~99.8% fewer tokens** and ~94% fewer tool calls than file-reading agents.
 
