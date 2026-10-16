@@ -1,61 +1,84 @@
 # Marc Mantei · Senior AI Engineer
 
-I build self-regulating AI systems: closed control loops that plan, implement, review, and ship software with the human as approver, not operator.
+**Forward Deployed Engineer** · AI systems, platforms, advisory · based in Germany
 
-10+ years of production infrastructure behind it, from terabyte-scale data pipelines at Netflix (Eyeline Studios) to autonomous multi-agent platforms. My thesis: AI work is only trustworthy inside a feedback loop with a measured signal, an actuator, a setpoint, and a proof.
+I build self-regulating AI systems: closed control loops that plan, implement, review and ship software, each with a measured signal, a setpoint and a proof. The human approves; the system operates.
 
-> Built automation infrastructure for [Eyeline Studios'](https://eyelinestudios.com/en/studios/stages) production pipelines at Netflix, processing terabytes across 100+ concurrent data sources with async orchestration and distributed queues.
+More than ten years of workflow automation, from Netflix's virtual production stages to AI systems that ship software on their own. Now: founder of SupportPilot, building Shipyard and Myceliums. Open for senior AI engineering roles, freelance projects in AI workflow automation, and advisory.
 
+> At [Eyeline Studios](https://eyelinestudios.com/en/studios/stages) (Netflix) I built key production tools for the virtual production stages (LED volumes, volumetric capture, the Light Dome) and automated terabyte-scale data workflows across 100+ sources, with C++/Python API bridges and global CI/CD.
+
+[![Website](https://img.shields.io/badge/marcmantei.com-0B0B0A?style=flat&logo=safari&logoColor=white)](https://www.marcmantei.com)
+[![Intro call](https://img.shields.io/badge/Request_an_intro_call-4A9B6E?style=flat&logo=googlecalendar&logoColor=white)](https://cal.marcmantei.com/marc/intro-meeting)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcmantei/)
-[![Website](https://img.shields.io/badge/marcmantei.com-555?style=flat&logo=safari&logoColor=white)](https://www.marcmantei.com)
 [![Email](https://img.shields.io/badge/mail@marcmantei.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:mail@marcmantei.com)
 [![IMDb](https://img.shields.io/badge/IMDb-F5C518?style=flat&logo=imdb&logoColor=000)](https://www.imdb.com/name/nm15608082/)
 
----
-
-### Shipyard · Self-Managing AI Platform
-
-A self-hosted platform where AI owns the software lifecycle end to end: issue triage → PRD → implementation → independent review → merge → report. ~450 PRs shipped in its first 9 weeks, 77 commits of them authored by the platform's own bots.
-
-![Shipyard Mission Control, live: a 7-wave epic shipped end to end by autonomous workers](assets/mission-control.webp)
-
-*Mission Control, live: a 7-wave epic shipped end to end by autonomous workers. Every issue with its PR, token count, and cost.*
-
-The architecture separates deterministic orchestration (Apache Airflow: routing, RBAC, retries) from reasoning (a Rust agent runtime on Claude Opus). Around that core runs a fleet of **~20 closed control loops**, each with a measured signal, an actuator, a setpoint, and a proof. Ten complete loop scenarios (convergence, oscillation, plateau, crash-resume) are replayed as regression tests.
-
-- **Review ↔ fix loop**: findings → adversarial verification → weighted error → fix worker → re-review. Converged bot PRs auto-merge behind hard gates; plateau or oscillation escalates to a human
-- **LLM-as-judge quality gates**: every deliverable scored against a rubric before it ships; dual-judge divergence fails toward a human
-- **Self-healing**: watchdogs detect worker timeouts, orphaned dispatches, and lost webhooks, classify the root cause, and remediate. Proven end to end: a recurring timeout auto-filed its own architecture issue, which became the fix PR the healer now carries
-- **Hill-climbing engine**: every 6 hours, production traces are clustered into failure patterns and filed as improvement issues. The system proposes; it never self-modifies
-- **Confidence calibration**: weekly Brier-score checks verify that a self-reported 0.8 actually means ~80% correct
-
-![Live loop state of open PRs: error trajectory converging to zero, judge scores, and event-triggered auto-merge gates](assets/review-fix-loops.webp)
-
-*The review↔fix loops, live: each PR with its error trajectory (2 → 1 → 0), judge score, and convergence state. Converged PRs wait on event-triggered auto-merge gates.*
-
-Guardrails are structural: the worker that builds a PR never reviews it, no agent merges its own work, every event passes an RBAC gauntlet, and every LLM call is traced with per-generation cost (Langfuse + Prometheus/Grafana). 20+ containers on my own hardware, zero infrastructure cost. Orchestration overhead is measured, not guessed: ~10% of total spend, tracked per generation in Grafana.
-
-![Grafana panels: implementation vs orchestration cost, and a measured orchestration overhead of 10.1 percent](assets/orchestration-overhead.webp)
-
-**Scale:** ~66k LOC · 40 Airflow DAGs · 109 test files · 20+ containers
-**Stack:** Python · Apache Airflow · Rust agent runtime · Claude Opus/Haiku · Langfuse · Prometheus · Loki · Grafana · PostgreSQL · Docker
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/commit-graph-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/commit-graph-light.svg" />
+  <img alt="Commit activity over the last 53 weeks: a weekly curve on a square-root scale above a daily heatmap" src="assets/commit-graph-dark.svg" width="100%" />
+</picture>
 
 ---
 
-### Myceliums · Code Knowledge Graph
+### Shipyard · A self-hosted platform where AI ships software
 
-A ~57,000-line Rust engine that parses codebases into a queryable knowledge graph, so AI agents understand architecture before they write a single line. Published on [crates.io](https://crates.io/crates/myc), Homebrew, and Docker. Fully local: no cloud, no telemetry.
+AI agents write code fast, but unattended output is hard to trust. Shipyard turns an approved plan into merged software: independent AI workers build, review and fix each issue, wave by wave. Every automated decision runs inside a closed control loop with a measured signal, a hard cap and an escalation path to a human. In production since May 2026.
 
-![Myceliums: code intelligence infrastructure for AI agents](assets/myceliums-banner.png)
+![Shipyard Mission Control: the fleet in one sentence, and only what needs a person on top](assets/shipyard-mission-control.webp)
 
-Benchmarked against six real open-source repos (Django, FastAPI, Tokio, Express, Zod, Gin): **~99.8% token reduction** and ~94% fewer tool calls versus file-reading agents, with cached lookups around 50 ms.
+*Mission Control, live: the fleet in one sentence, and only what needs a person on top.*
 
-- 7-crate Rust workspace: core, storage, MCP server, Cypher engine, HTTP server, benchmarks, CLI
-- Parses 23 languages via tree-sitter
-- Hybrid search: BM25 + local ONNX embeddings fused via Reciprocal Rank Fusion, optional cross-encoder reranking, LanceDB vector store with automatic IVF-PQ indexing
-- Impact analysis: parses the git diff, then walks the call graph to map a change's blast radius
-- Graph intelligence: Leiden community detection, centrality, cycle detection, architecture linting and drift detection
-- 12 MCP tools with one-command setup for 12 editor platforms
+Shipyard opened **267 pull requests** on its own across 10 repositories. **240 were merged**: 75 by its own merge gates, 165 by me. About 90% of the commits in my repositories over the last six months were written by it. Over 1 billion tokens metered, 276 PRs through its AI reviewer (as of 24 Sep 2026).
+
+- **11 plans shipped end to end**, each closed only after its acceptance check passed in a throwaway container
+- **125 PRs sent back to be fixed**: the reviewer found something at least once in 125 pull requests, twice in 30, three times in 6
+- **81 escalations since July**: when the error stops falling or the round budget runs out, it stops and asks. It raised 78 of them itself
+- **1 plan → 7 merged PRs**: a terrain generator went from one approval to seven merged pull requests for €16.23 of model time at list price
+
+![A loop's flight recorder: error, judge and confidence per round, and which of six rules stopped it](assets/shipyard-flight-recorder.webp)
+
+*A loop's flight recorder: error, judge and confidence per round, and which of six rules stopped it.*
+
+Six loop families, nested by timescale, so every ring can stop what runs inside it: the eval loop on every AI output, the build loop per issue, the cascade every ten minutes, the hill-climbing engine every six hours. The review budget is earned by the size of the problem (3 to 8 rounds), and loop state lives on the PR itself, so it survives restarts. Guardrails are structural: the worker that builds a PR never reviews it, and no agent merges its own work.
+
+[Control loop atlas](https://www.marcmantei.com/shipyard/index.html) · [Loop sheet](https://www.marcmantei.com/shipyard/control-loops.html)
+
+**Stack:** Python · Apache Airflow · FastAPI · Claude · Grok · PostgreSQL · Redis · Langfuse · OpenTelemetry · Prometheus · Grafana · Loki · Docker
+
+---
+
+### SupportPilot · An AI support desk that earns its autonomy
+
+Any model can write a plausible support email. The hard part is knowing when one is safe to send unread. SupportPilot drafts replies from the knowledge base and live order or booking data, checks every order number, tracking number and price against it, and lets unit-tested code, not the model, decide what needs a human. It is Shipyard's merge-gate loop, applied to customer email. Pre-launch.
+
+![SupportPilot: a customer asks where her order is; the draft quotes live order data and waits for approval](assets/supportpilot-inbox.webp)
+
+**7** hard gates before any auto-send · **4** possible outcomes per draft · **1,798** backend tests on SQLite and Postgres · **1,061** commits in 29 days, merges not counted
+
+---
+
+### Myceliums · A code knowledge graph for AI agents
+
+Coding agents answer structural questions by grepping and reading whole files, which burns context and still misses indirect callers. Myceliums is a local Rust engine that parses a repository into a graph of symbols, calls, communities and execution flows, and serves it over MCP. One tool call returns callers, blast radius or a Cypher result as compact text. Open source (Apache-2.0), v0.3.2, fully local: no cloud, no telemetry.
+
+![Gin's call graph as built by Myceliums: 1,261 connected symbols, colored by package](assets/myceliums-call-graph.webp)
+
+*Gin's call graph as built by Myceliums: 1,261 connected symbols, colored by package.*
+
+<p>
+  <img src="assets/myceliums-cli.webp" alt="myc analyze indexes Gin in 390 ms of parsing, then a Cypher query lists every caller of ClientIP" width="49%" />
+  <img src="assets/myceliums-mcp.webp" alt="One MCP call on a one-line change returns callers and callees in about 243 tokens" width="49%" />
+</p>
+
+*Left: `myc analyze` indexes Gin in 390 ms of parsing, then a Cypher query lists every caller of `ClientIP`. Right: one MCP call on a one-line change returns its callers and callees in about 243 tokens.*
+
+Benchmarked on six open-source repos (Django, FastAPI, Tokio, Express, Zod, Gin): **~99.8% fewer tokens** and ~94% fewer tool calls than file-reading agents.
+
+**23** languages parsed · **54** MCP tools for agents · **14** one-command integrations · **~60k** lines of Rust
+
+[Website](https://myceliums.marcmantei.com) · [GitHub](https://github.com/marcmantei/myceliums) · [crates.io](https://crates.io/crates/myc)
 
 **Stack:** Rust · tree-sitter · LanceDB · fastembed · MCP · Cypher
 
@@ -66,29 +89,18 @@ Benchmarked against six real open-source repos (Django, FastAPI, Tokio, Express,
 ![Python](https://img.shields.io/badge/-Python-555?style=flat-square&logo=python&logoColor=fff)
 ![Rust](https://img.shields.io/badge/-Rust-555?style=flat-square&logo=rust&logoColor=fff)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-555?style=flat-square&logo=typescript&logoColor=fff)
-![Apache Airflow](https://img.shields.io/badge/-Airflow-555?style=flat-square&logo=apacheairflow&logoColor=fff)
 ![Claude](https://img.shields.io/badge/-Claude-555?style=flat-square&logo=anthropic&logoColor=fff)
-![Docker](https://img.shields.io/badge/-Docker-555?style=flat-square&logo=docker&logoColor=fff)
+![MCP](https://img.shields.io/badge/-MCP-555?style=flat-square&logo=modelcontextprotocol&logoColor=fff)
+![Apache Airflow](https://img.shields.io/badge/-Airflow-555?style=flat-square&logo=apacheairflow&logoColor=fff)
+![FastAPI](https://img.shields.io/badge/-FastAPI-555?style=flat-square&logo=fastapi&logoColor=fff)
 ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-555?style=flat-square&logo=postgresql&logoColor=fff)
+![Redis](https://img.shields.io/badge/-Redis-555?style=flat-square&logo=redis&logoColor=fff)
+![Docker](https://img.shields.io/badge/-Docker-555?style=flat-square&logo=docker&logoColor=fff)
+![Langfuse](https://img.shields.io/badge/-Langfuse-555?style=flat-square)
+![OpenTelemetry](https://img.shields.io/badge/-OpenTelemetry-555?style=flat-square&logo=opentelemetry&logoColor=fff)
 ![Prometheus](https://img.shields.io/badge/-Prometheus-555?style=flat-square&logo=prometheus&logoColor=fff)
 ![Grafana](https://img.shields.io/badge/-Grafana-555?style=flat-square&logo=grafana&logoColor=fff)
+![GitHub Actions](https://img.shields.io/badge/-GitHub_Actions-555?style=flat-square&logo=githubactions&logoColor=fff)
 ![Linux](https://img.shields.io/badge/-Linux-555?style=flat-square&logo=linux&logoColor=fff)
-![Git](https://img.shields.io/badge/-Git-555?style=flat-square&logo=git&logoColor=fff)
 
----
-
-### GitHub Stats
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=marcmantei&theme=github-dark-blue&hide_border=true&v=2" />
-    <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=marcmantei&theme=default&hide_border=true&v=2" />
-    <img alt="GitHub Streak" src="https://streak-stats.demolab.com?user=marcmantei&theme=default&hide_border=true&v=2" />
-  </picture>
-</p>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-dark&hide_border=true&area=true&v=2" />
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-light&hide_border=true&area=true&v=2" />
-  <img alt="Contribution Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=marcmantei&theme=github-light&hide_border=true&area=true&v=2" width="100%" />
-</picture>
+<sub>The commit graph above is rendered by [`scripts/commit_graph.py`](scripts/commit_graph.py) and refreshed daily by a GitHub Action: no third-party service, private repositories counted, their names never published.</sub>

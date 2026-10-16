@@ -1,0 +1,42 @@
+name: Commit graph
+
+# Re-renders assets/commit-graph-{dark,light}.svg from GitHub's contribution data.
+# Needs a COMMIT_GRAPH_TOKEN secret: a token of the profile owner that can read
+# private contributions (classic PAT with read:user and repo). The default
+# GITHUB_TOKEN only sees public repositories and would undercount.
+on:
+  schedule:
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: commit-graph
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Render
+        env:
+          GH_TOKEN: ${{ secrets.COMMIT_GRAPH_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::COMMIT_GRAPH_TOKEN is not set; refusing to publish public-only counts."
+            exit 1
+          fi
+          python3 scripts/commit_graph.py --login "${{ github.repository_owner }}"
+
+      - name: Commit
+        run: |
+          git add assets/commit-graph-dark.svg assets/commit-graph-light.svg
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -m "Refresh commit graph"
+          git push
