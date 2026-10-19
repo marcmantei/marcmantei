@@ -26,9 +26,13 @@ More than ten years of workflow automation, from Netflix's virtual production st
 
 AI agents write code fast, but unattended output is hard to trust. Shipyard turns an approved plan into merged software: independent AI workers build, review and fix each issue, wave by wave. Every automated decision runs inside a closed control loop with a measured signal, a hard cap and an escalation path to a human. In production since May 2026.
 
-![Shipyard Mission Control overview: "1 thing needs you", with 14-day charts for CI minutes, commits and API-equivalent value](assets/shipyard-overview.webp)
+![Shipyard Mission Control overview: "1 thing needs you", with 14-day curves for CI minutes, merged PRs and API-equivalent value](assets/shipyard-overview.webp)
 
-*Mission Control, live: the fleet in one sentence, only what needs a person on top, and 14 days of CI minutes, commits and API-equivalent value.*
+*Mission Control, live: the fleet in one sentence, only what needs a person on top, and 14 days of CI minutes, merged PRs and API-equivalent value.*
+
+![A cascade in Mission Control: shipyard#735 shipped wave by wave, each wave with its pull request, cost and state](assets/shipyard-cascade.webp)
+
+*A plan becomes waves of issues. A wave ships before the next one starts: two waves merged, the third in the review loop.*
 
 Shipyard opened **267 pull requests** on its own across 10 repositories. **240 were merged**: 75 by its own merge gates, 165 by me. About 90% of the commits in my repositories over the last six months were written by it. Over 1 billion tokens metered, 276 PRs through its AI reviewer (as of 24 Sep 2026).
 
@@ -37,18 +41,23 @@ Shipyard opened **267 pull requests** on its own across 10 repositories. **240 w
 - **81 escalations since July**: when the error stops falling or the round budget runs out, it stops and asks. It raised 78 of them itself
 - **1 plan → 7 merged PRs**: a terrain generator went from one approval to seven merged pull requests for €16.23 of model time at list price
 
-![A loop's flight recorder for shipyard#636: error 2 to 0.5, judge 0.70 to 0.76, confidence 0.18 to 0.49, and the plateau rule that stopped it](assets/shipyard-flight-recorder.webp)
+![The loops view: every open pull request as a control loop, with admitted fixes, verified error, judge score and confidence](assets/shipyard-loops.webp)
 
-*A loop's flight recorder: error fell 75% over three rounds while confidence rose, and it names which of six rules stopped it.*
+*Review ↔ fix, until the error is zero: each card is one pull request's control loop, and the confidence decides between merge, a human, or smaller tickets.*
 
-<p>
-  <img src="assets/shipyard-decision-brief.webp" alt="Decision brief for shipyard#638: the fix loop stopped on budget and waits for a call, with its evidence and trajectory" width="49%" />
-  <img src="assets/shipyard-grading.webp" alt="Finished projects: grade distribution A 16, B 11, C 5, D 1, and where weak cases lose by control-loop component" width="49%" />
-</p>
+![Flight recorder of shipyard#721: verified error 1.5 to 0.5, judge 0.68 to 0.71, confidence 0.17 to 0.45, against the auto-merge band](assets/shipyard-flight-recorder.webp)
 
-*Left: every waiting item opens as a decision, with the situation in one sentence and the evidence behind it. Right: every finished case is graded A to D, and weak cases are traced to the control-loop component that lost them.*
+*A loop's flight recorder: the verified error fell 67% in one fix round while confidence rose 163%, still below the auto-merge band, so it keeps going.*
+
+![Decision brief for shipyard#638: the fix loop stopped on budget, its evidence and trajectory, and three options to decide](assets/shipyard-decision-brief.webp)
+
+*When a loop stops, it opens as a decision: the situation in one sentence, the evidence, and three options with their consequences.*
 
 Six loop families, nested by timescale, so every ring can stop what runs inside it: the eval loop on every AI output, the build loop per issue, the cascade every ten minutes, the hill-climbing engine every six hours. The review budget is earned by the size of the problem (3 to 8 rounds), and loop state lives on the PR itself, so it survives restarts. Guardrails are structural: the worker that builds a PR never reviews it, and no agent merges its own work.
+
+![The machine room: the health gate at 17/17 blocking checks, green, so waves may be released](assets/shipyard-system.webp)
+
+*The health gate: a wave is only released while every blocking check is green.*
 
 [Control loop atlas](https://www.marcmantei.com/shipyard/index.html) · [Loop sheet](https://www.marcmantei.com/shipyard/control-loops.html)
 
