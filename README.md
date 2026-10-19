@@ -41,23 +41,11 @@ Shipyard opened **267 pull requests** on its own across 10 repositories. **240 w
 - **81 escalations since July**: when the error stops falling or the round budget runs out, it stops and asks. It raised 78 of them itself
 - **1 plan → 7 merged PRs**: a terrain generator went from one approval to seven merged pull requests for €16.23 of model time at list price
 
-![The loops view: every open pull request as a control loop, with admitted fixes, verified error, judge score and confidence](assets/shipyard-loops.webp)
-
-*Review ↔ fix, until the error is zero: each card is one pull request's control loop, and the confidence decides between merge, a human, or smaller tickets.*
-
-![Flight recorder of shipyard#721: verified error 1.5 to 0.5, judge 0.68 to 0.71, confidence 0.17 to 0.45, against the auto-merge band](assets/shipyard-flight-recorder.webp)
-
-*A loop's flight recorder: the verified error fell 67% in one fix round while confidence rose 163%, still below the auto-merge band, so it keeps going.*
-
 ![Decision brief for shipyard#638: the fix loop stopped on budget, its evidence and trajectory, and three options to decide](assets/shipyard-decision-brief.webp)
 
 *When a loop stops, it opens as a decision: the situation in one sentence, the evidence, and three options with their consequences.*
 
 Six loop families, nested by timescale, so every ring can stop what runs inside it: the eval loop on every AI output, the build loop per issue, the cascade every ten minutes, the hill-climbing engine every six hours. The review budget is earned by the size of the problem (3 to 8 rounds), and loop state lives on the PR itself, so it survives restarts. Guardrails are structural: the worker that builds a PR never reviews it, and no agent merges its own work.
-
-![The machine room: the health gate at 17/17 blocking checks, green, so waves may be released](assets/shipyard-system.webp)
-
-*The health gate: a wave is only released while every blocking check is green.*
 
 [Control loop atlas](https://www.marcmantei.com/shipyard/index.html) · [Loop sheet](https://www.marcmantei.com/shipyard/control-loops.html)
 
